@@ -1,0 +1,134 @@
+{extend name='common'}
+{block name="link"}
+<link rel="stylesheet" href="/static/admin/css/manage-posts.css">
+{/block}
+
+{block name="header"}
+{include file='common/header'}
+{/block}
+{block name="main"}
+<div class="layui-body">
+  <div class="layui-body_box">
+    <div class="layui-body_wrap">
+      <div class="layui-body_wrap_title">友联管理</div>
+      <div class="operation_wrap">
+        <a href="/admin/link">
+          <button class="newDate_btn">新增友联</button></a>
+        <div class="screening">
+          <select name="class" class="screening_val">
+            <option value="默认分类">默认分类</option>
+            <option value="JavaScript">JavaScript</option>
+          </select>
+          <button class="screening_btn">筛选</button>
+        </div>
+      </div>
+      <table class="layui-table article_table">
+        <colgroup>
+          <col width="150">
+          <col width="200">
+          <col>
+        </colgroup>
+        <thead>
+        <tr>
+          <th>网站名称</th>
+          <th>站长邮箱</th>
+          <th>网站地址</th>
+          <th>网站介绍</th>
+          <th>网站图标</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $data as $key=>$item}
+        <tr>
+          <td>{$item.name}</td>
+          <td>{$item.email}</td>
+          <td>{$item.url}</td>
+          <td>{$item.description}</td>
+          <td>{$item.icon}</td>
+          <td>
+            <input class="xk_checkbox" type="checkbox"  data-id="{$item.id}" {$item.state == 0  ? '' : 'checked'} >
+          </td>
+          <td>
+            <div class="article_handle_wrap">
+              <a href="/admin/link?id={$item.id}"> <button class="article_handle_item edit">
+
+                <span class="layui-icon layui-icon-edit article_handle_item_icon"></span>
+
+              </button> </a>
+              <button class="article_handle_item delete" onclick="Datadel({$item.id})">
+                <span class="layui-icon layui-icon-delete article_handle_item_icon" ></span>
+              </button>
+            </div>
+          </td>
+        </tr>
+        {/foreach}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{/block}
+{block name="aside"}
+{include file='common/aside'}
+{/block}
+
+{block name="footer_script"}
+<script>
+
+  function Datadel(id) {
+    layer.confirm('你确认要删除吗？', {
+      btn: ['确认', '取消'] //可以无限个按钮
+      ,btn2: function(index, layero){
+      }
+    }, function(index, layero){
+      $.ajax({
+        type:'post',
+        url:'/admin/manage_link/del',
+        data:{
+          id
+        },
+        success:function (result) {
+          if(result.meta.status !== 200) {
+            layer.open({
+              title: '提示信息',
+              content: result.meta.msg,
+            });
+            return
+          }
+          window.location.href="/admin/manage_link"
+        },
+        error:function (err){}
+
+      })
+      // 隐藏
+      $('#layui-layer-shade1').hide()
+      layero[0].style.display = 'none'
+    });
+
+  }
+
+  $('.xk_checkbox').on('change',function (){
+    let state  = this.checked
+    let id = this.getAttribute('data-id')
+    $.ajax({
+      type:"post",
+      url:"/admin/manage_link/edit",
+      data:{
+        state,
+        id
+      },
+      success:function (res){
+        if(res.meta.status == 200) {
+          console.log('修改成功！')
+          return
+        }
+        console.log('修改失败！')
+      }
+    })
+  })
+
+</script>
+{/block}

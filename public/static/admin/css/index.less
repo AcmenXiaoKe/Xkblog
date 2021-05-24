@@ -1,0 +1,163 @@
+.layui-layout-admin
+{
+    .layui-body {
+        .System_information {
+            margin-top: 15px;
+            .layui-row {
+                height: 100%;
+            }
+            .System_information_item {
+                height: 150px;
+                .System_information_item_wrap {
+                    padding: var(--margin-sm);
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    background: #fff;
+                    overflow: hidden;
+                    border-radius: 5px;
+                    box-shadow: var(--Primary-shadow);
+                    color: var(--color-white);
+                    .System_information_item_wrap_icon {
+                        font-size: 60px;
+                        opacity: 0.2;
+                    }
+                    .System_information_item_info {
+                        position: absolute;
+                        display: flex;
+                        flex-direction: column;
+                        top: 50%;
+                        transform: translate(0%,-50%);
+                        right: var(--margin-sm);
+                        text-align: center;
+                        .System_information_item_info_num {
+                            font-size: 18px;
+                        }
+                        .System_information_item_info_total {
+                            font-size: 16px;
+                        }
+                    } 
+                    .System_information_item_footer {
+                        color: var(--color-white);
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        display: flex;
+                        justify-content: space-between;
+                        height: 35px;
+                        line-height: 35px;
+                        width: 100%;
+                        padding: 0 var(--margin-sm);
+                        background: rgba(255,255,255,.1);
+                        .System_information_item_footer_left {
+                            font-size: 12px;
+                        }
+                        .System_information_item_footer_right {
+                            .layui-icon-link {
+                                font-size: 13px;
+                            }
+                        }
+                    }
+                }
+                .System_information_article {
+                    background: var(--Primary);
+                }
+                .System_information_class {
+                    background: var(--Danger);
+                }
+                .System_information_comments {
+                    background: var(--Warning);
+                }
+                .System_information_browse {
+                    background: var(--Success);
+                }
+            }
+        }
+        .latest_information {
+            margin-top: 20px;
+            .latest_information_item {
+                .latest_information_wrap {
+                    box-shadow: var(--Primary-shadow);
+                    border-radius: 5px;
+                    background: #fff;
+                    padding: 15px;
+                    .latest_information_wrap_title {
+                        font-size: 16px;
+                    }
+                    .latest_information_item_list {
+                        margin-top: 15px;
+                        .latest_information_item_list_item {
+                            padding: 5px ;
+                            a {
+                                color: var(--Info);
+                            }
+                            .segmentation {
+                                display: inline-block;
+                                padding-right: 5px;
+                                margin-right: 5px;
+                                border-right: 1px solid var(--border-color);
+                            }
+                            .comments_name {
+                                color: var(--Primary);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .quick {
+            margin-top: 5px;
+            .quick_item {
+                height: 250px;
+                .quick_item_wrap  {
+                    padding: 15px;
+                    height: 100%;
+                    background: #fff;
+                    box-shadow: var(--Primary-shadow);
+                    .quick_item_wrap_title {
+                        height: 30px;
+                        border-bottom: 1px solid var(--border-color);
+                        margin-bottom: 10px;
+                    }
+                    .quick_item_list {
+                        display: flex;
+                        flex-wrap: wrap;
+                        height: 180px;
+                        align-items: stretch;
+                        .quick_item_list_item {
+                            width: 25%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+
+                            .quick_item_list_item_icon_wrap {
+                              
+                                .quick_item_list_item_icon {
+                                    font-size: 30px;
+                                }
+                            }
+                        }
+                    }
+                    .backlog {
+                        flex-wrap: wrap;
+                        align-items: center;
+                        padding: 15px;
+                        .backlog_item_list_item {
+                            width: 50% ;
+
+                            .backlog_item_list_item_title {
+                                color: var(--Info);
+                            }
+                            .backlog_item_list_item_num {
+                                margin-top: 5px;
+                                color: var(--Primary);
+                                font-size: 25px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 

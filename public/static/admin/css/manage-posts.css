@@ -1,0 +1,34 @@
+.layui-body_wrap {
+  width: 100% !important;
+}
+.layui-body_wrap .article_table .article_handle_wrap {
+  display: flex;
+}
+.layui-body_wrap .article_table .article_handle_wrap .article_handle_item {
+  padding: 3px 8px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 2px;
+  margin: 0 5px;
+}
+.layui-body_wrap .article_table .article_handle_wrap .article_handle_item .article_handle_item_icon {
+  color: var(--color-white);
+}
+.layui-body_wrap .article_table .article_handle_wrap .edit {
+  background: var(--Primary);
+}
+.layui-body_wrap .article_table .article_handle_wrap .edit:hover {
+  background: #3991e9;
+}
+.layui-body_wrap .article_table .article_handle_wrap .delete {
+  background: var(--Danger);
+}
+.layui-body_wrap .article_table .article_handle_wrap .delete:hover {
+  background: #cc2a68;
+}
+.layui-body_wrap .class_deta {
+  color: var(--Primary);
+}
+.layui-body_wrap .class_deta:hover {
+  color: #3886d4;
+}

@@ -1,0 +1,95 @@
+{extend name='common'}
+{block name="link"}
+    <link rel="stylesheet" href="/static/admin/css/site_set.css">
+{/block}
+
+{block name="header"}
+{include file='common/header'}
+{/block}
+{block name="main"}
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div class="layui-body_box">
+                <div class="layui-body_wrap">
+                    <div class="layui-body_wrap_title">{$operation == 'insert' ? '新增分类' : '修改分类'}</div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs12  layui-col-md8 layui-col-md-offset2">
+                            <form  class="site_set_From">
+                                <div class="Form_item">
+                                    <div class="From_item_title">分类名称 *</div>
+                                    <input type="text"  name="name" id="class_name" required class="From_item_input" value="{$data.name ?: ''}">
+                                    <input type="hidden"  id="crid" value="{$data['crid'] ?: '' }">
+                                    <input type="hidden" id="operation" value="{$operation}">
+                                </div>
+<!--                                <div class="Form_item">-->
+<!--                                    <div class="From_item_title">分类缩略名</div>-->
+<!--                                    <input type="text"  name="" class="From_item_input" value="">-->
+<!--                                    <div class="From_item_prompt">分类缩略名用于创建友好的链接形式, 建议使用字母, 数字, 下划线和横杠.</div>-->
+<!--                                </div>-->
+<!--                                <div class="Form_item">-->
+<!--                                    <div class="From_item_title">父级分类</div>-->
+<!--                                    <select name="parent"   id="parent">-->
+<!--                                        <option value="null">不选择</option>-->
+<!--                                      -->
+<!--                                    </select>-->
+<!--                                    <div class="From_item_prompt">此分类将归档在您选择的父级分类下.</div>-->
+<!--                                </div>-->
+<!--                                <div class="Form_item">-->
+<!--                                    <div class="From_item_title">分类描述</div>-->
+<!--                                    <input type="text" class="From_item_input" value="xkblog,php,blog">-->
+<!--                                    <div class="From_item_prompt">此文字用于描述分类, 在有的主题中它会被显示.</div>-->
+<!--                                </div>-->
+                                <input type="submit" class="From_submit" value="{$operation == 'insert' ? '新增分类' : '修改分类'}">
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+{/block}
+{block name="aside"}
+{include file='common/aside'}
+{/block}
+
+{block name="footer_script"}
+<script>
+var site_set_From = document.querySelector('.site_set_From')
+site_set_From.onsubmit = function () {
+        let crid = $('#crid').val();
+        let operation = $('#operation').val();
+    $.ajax({
+        type:"POST",
+        url:"/admin/category/handle",
+        data:{
+            name:$('#class_name').val(),
+            crid,
+            operation
+        },
+        success:function (result){
+
+            if(result.meta.status !== 200) {
+                layer.open({
+                    title: '提示信息',
+                    content: result.meta.msg,
+                });
+
+                return false
+            }
+            window.location.href="/admin/manage_categories"
+            return false;
+        },
+        error:function (){
+            layer.open({
+                title: '提示信息',
+                content: '分类已经存在！',
+            });
+            return false;
+        }
+
+    })
+    return false;
+
+}
+</script>
+{/block}

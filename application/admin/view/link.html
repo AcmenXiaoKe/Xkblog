@@ -1,0 +1,139 @@
+{extend name='common'}
+{block name="link"}
+<link rel="stylesheet" href="/static/admin/css/site_set.css">
+{/block}
+
+{block name="header"}
+{include file='common/header'}
+{/block}
+{block name="main"}
+<div class="layui-body">
+  <!-- 内容主体区域 -->
+  <div class="layui-body_box">
+    <div class="layui-body_wrap">
+      <div class="layui-body_wrap_title">{$operation == 'insert' ? '新增友联' : '修改友联'}</div>
+      <div class="layui-row">
+        <div class="layui-col-xs12  layui-col-md8 layui-col-md-offset2">
+          <form  class="site_set_From">
+            <div class="Form_item">
+              <div class="From_item_title">网站名称 *</div>
+              <input type="text"  name="name" id="name" required class="From_item_input" value="{$data.name ?: ''}">
+              <input type="hidden"  id="id" value="{$data['id'] ?: '' }">
+              <input type="hidden" id="operation" value="{$operation}">
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">网站介绍 *</div>
+              <input type="text"  name="" id="description" required class="From_item_input" value="{$data.description ?: ''}">
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">网站地址 *</div>
+              <input type="text"  name="" id="url" required class="From_item_input" value="{$data.url ?: ''}">
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">网站邮箱 *</div>
+              <input type="email"  name="" id="email" required class="From_item_input" value="{$data.email ?: ''}">
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">网站图标</div>
+              <input type="text"  name="" id="icon"  class="From_item_input" value="{$data.icon ?: ''}">
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">网站序号</div>
+              <input type="number"  name="" id="numerical"  class="From_item_input" value="{$data.numerical ?: ''}">
+              <div class="From_item_prompt">序号值越大越排在前面.</div>
+            </div>
+            <!--                                <div class="Form_item">-->
+            <!--                                    <div class="From_item_title">父级分类</div>-->
+            <!--                                    <select name="parent"   id="parent">-->
+            <!--                                        <option value="null">不选择</option>-->
+            <!--                                      -->
+            <!--                                    </select>-->
+            <!--                                    <div class="From_item_prompt">此分类将归档在您选择的父级分类下.</div>-->
+            <!--                                </div>-->
+            <!--                                <div class="Form_item">-->
+            <!--                                    <div class="From_item_title">分类描述</div>-->
+            <!--                                    <input type="text" class="From_item_input" value="xkblog,php,blog">-->
+            <!--                                    <div class="From_item_prompt">此文字用于描述分类, 在有的主题中它会被显示.</div>-->
+            <!--                                </div>-->
+            <input type="submit" class="From_submit" value="{$operation == 'insert' ? '新增友联' : '修改友联'}">
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{/block}
+{block name="aside"}
+{include file='common/aside'}
+{/block}
+
+{block name="footer_script"}
+<script>
+  var site_set_From = document.querySelector('.site_set_From')
+  site_set_From.onsubmit = function () {
+    let id = $('#id').val();
+    let operation = $('#operation').val();
+    let name = $('#name').val()
+    let description = $('#description').val()
+    let url = $('#url').val()
+    let email = $('#email').val()
+    let icon = $('#icon').val()
+    let numerical = $('#numerical').val()
+    var data = {}
+
+
+    if(operation == 'insert') {
+      data =   {
+        name,
+        description,
+        url,
+        email,
+        icon,
+        numerical,
+        operation
+      }
+    }
+    if(operation =='update') {
+      data =   {
+        name,
+        description,
+        url,
+        email,
+        icon,
+        numerical,
+        operation,
+        id
+      }
+    }
+    $.ajax({
+      type:"POST",
+      url:"/admin/link/handle",
+      data:data,
+      success:function (result){
+
+        if(result.meta.status !== 200) {
+          layer.open({
+            title: '提示信息',
+            content: result.meta.msg,
+          });
+
+          return false
+        }
+        window.location.href="/admin/manage_link"
+        return false;
+      },
+      error:function (){
+        layer.open({
+          title: '提示信息',
+          content: '友联已经存在！',
+        });
+        return false;
+      }
+
+    })
+    return false;
+
+  }
+</script>
+{/block}

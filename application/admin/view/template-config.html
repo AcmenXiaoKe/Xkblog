@@ -1,0 +1,52 @@
+{extend name='common'}
+{block name="link"}
+<link rel="stylesheet" href="/static/admin/css/site_set.css">
+{/block}
+
+{block name="header"}
+{include file='common/header'}
+{/block}
+
+{block name="main"}
+<div class="layui-body">
+  <!-- 内容主体区域 -->
+  <div class="layui-body_box">
+    <div class="layui-body_wrap">
+      <div class="layui-body_wrap_title">模板设置</div>
+      <div class="layui-row">
+        <div class="layui-col-xs12  layui-col-md8 layui-col-md-offset2">
+          <form action="/admin/template_config/edit" method="post" class="site_set_From">
+            <div class="Form_item">
+              <div class="From_item_title">网站Logo</div>
+              <input type="text"  required class="From_item_input From_item_input_name" name="logo" value="{$data.logo ? $data.logo  : ''}">
+              <div class="From_item_prompt">用于设置网站 Logo，一个好的 Logo 能为网站带来有效的流量</div>
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">
+                博主栏座右铭（一言)</div>
+              <input type="text"  required class="From_item_input From_item_input_name" name="Introduction" value="{$data.Introduction}">
+              <div class="From_item_prompt">用于修改博主栏的座右铭（一言）</div>
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">
+                Live2D模型地址</div>
+              <input type="text"   class="From_item_input From_item_input_name" name="live2dModel" value="{$data.live2dModel ? $data.live2dModel : ''}">
+              <div class="From_item_prompt">用于首页右下角的模型</div>
+              <div class="From_item_prompt">注意：文件夹下必须存在 model.json 否则加载失败</div>
+            </div>
+            <input type="submit" class="From_submit" value="保存设置">
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{/block}
+{block name="aside"}
+{include file='common/aside'}
+{/block}
+
+
+{block name="footer_script"}
+{/block}

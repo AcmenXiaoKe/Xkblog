@@ -1,0 +1,151 @@
+.layui-layout-admin .layui-body .System_information {
+  margin-top: 15px;
+}
+.layui-layout-admin .layui-body .System_information .layui-row {
+  height: 100%;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item {
+  height: 150px;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap {
+  padding: var(--margin-sm);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: var(--Primary-shadow);
+  color: var(--color-white);
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap .System_information_item_wrap_icon {
+  font-size: 60px;
+  opacity: 0.2;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap .System_information_item_info {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  transform: translate(0%, -50%);
+  right: var(--margin-sm);
+  text-align: center;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap .System_information_item_info .System_information_item_info_num {
+  font-size: 18px;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap .System_information_item_info .System_information_item_info_total {
+  font-size: 16px;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap .System_information_item_footer {
+  color: var(--color-white);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  height: 35px;
+  line-height: 35px;
+  width: 100%;
+  padding: 0 var(--margin-sm);
+  background: rgba(255, 255, 255, 0.1);
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap .System_information_item_footer .System_information_item_footer_left {
+  font-size: 12px;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_item_wrap .System_information_item_footer .System_information_item_footer_right .layui-icon-link {
+  font-size: 13px;
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_article {
+  background: var(--Primary);
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_class {
+  background: var(--Danger);
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_comments {
+  background: var(--Warning);
+}
+.layui-layout-admin .layui-body .System_information .System_information_item .System_information_browse {
+  background: var(--Success);
+}
+.layui-layout-admin .layui-body .latest_information {
+  margin-top: 20px;
+}
+.layui-layout-admin .layui-body .latest_information .latest_information_item .latest_information_wrap {
+  box-shadow: var(--Primary-shadow);
+  border-radius: 5px;
+  background: #fff;
+  padding: 15px;
+  overflow: hidden !important;
+}
+.layui-layout-admin .layui-body .latest_information .latest_information_item .latest_information_wrap .latest_information_wrap_title {
+  font-size: 16px;
+}
+.layui-layout-admin .layui-body .latest_information .latest_information_item .latest_information_wrap .latest_information_item_list {
+  margin-top: 15px;
+}
+.layui-layout-admin .layui-body .latest_information .latest_information_item .latest_information_wrap .latest_information_item_list .latest_information_item_list_item {
+  padding: 5px ;
+}
+.layui-layout-admin .layui-body .latest_information .latest_information_item .latest_information_wrap .latest_information_item_list .latest_information_item_list_item a {
+  color: var(--Info);
+}
+.layui-layout-admin .layui-body .latest_information .latest_information_item .latest_information_wrap .latest_information_item_list .latest_information_item_list_item .segmentation {
+  display: inline-block;
+  padding-right: 5px;
+  margin-right: 5px;
+  border-right: 1px solid var(--border-color);
+}
+.layui-layout-admin .layui-body .latest_information .latest_information_item .latest_information_wrap .latest_information_item_list .latest_information_item_list_item .comments_name {
+  color: var(--Primary);
+}
+.layui-layout-admin .layui-body .quick {
+  margin-top: 5px;
+}
+.layui-layout-admin .layui-body .quick .quick_item {
+  height: 250px;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap {
+  padding: 15px;
+  height: 100%;
+  background: #fff;
+  box-shadow: var(--Primary-shadow);
+  border-radius: 5px;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .quick_item_wrap_title {
+  height: 30px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 10px;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .quick_item_list {
+  display: flex;
+  flex-wrap: wrap;
+  height: 180px;
+  align-items: stretch;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .quick_item_list .quick_item_list_item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .quick_item_list .quick_item_list_item .quick_item_list_item_icon_wrap .quick_item_list_item_icon {
+  font-size: 30px;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .backlog {
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 15px;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .backlog .backlog_item_list_item {
+  width: 50% ;
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .backlog .backlog_item_list_item .backlog_item_list_item_title {
+  color: var(--Info);
+}
+.layui-layout-admin .layui-body .quick .quick_item .quick_item_wrap .backlog .backlog_item_list_item .backlog_item_list_item_num {
+  margin-top: 5px;
+  color: var(--Primary);
+  font-size: 25px;
+}

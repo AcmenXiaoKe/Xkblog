@@ -1,0 +1,102 @@
+
+<!-- 头部 -->
+<div class="header">
+    <div class="wrap header_wrap">
+        <div class="menu">
+            <span class="iconfont  icon-caidan"></span>
+        </div>
+        <div class="header_wrap_left">
+            <div class="logo">
+                <a href="/">
+                    <img src="{$TemplateConfig.logo}" alt="">
+                </a>
+            </div>
+            <div class="nav">
+                <div class="header_author">
+                    <div class="header_author_info">
+                        <div class="header_author_info_left">
+                            <div class="header_author_info_tx">
+                                <img src="http://q1.qlogo.cn/g?b=qq&nk={$email}&s=640" alt="">
+                            </div>
+                        </div>
+                        <div class="header_author_info_right">
+                            <div class="header_author_info_name">{$name}</div>
+                            <div class="header_author_info_introduce">
+                                {$TemplateConfig.Introduction}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                <div class="navigation nav_title_item">-->
+<!--                    <span class="iconfont icon-tm-transition-jump"></span>独立页面-->
+<!--                </div>-->
+                {foreach $categories as $key=>$item}
+                <div href="/class/{$item.crid}" class="nav_item">
+                    <a href="/class/{$item.crid}" class="nav_item_href">{$item.name}</a>
+                    <div class="nav_item_hover">
+                        <div class="nav_item_hover_hr"></div>
+                    </div>
+                </div>
+                {/foreach}
+                <div href="/link" class="nav_item">
+                    <a href="/link" class="nav_item_href">友联</a>
+                    <div class="nav_item_hover">
+                        <div class="nav_item_hover_hr"></div>
+                    </div>
+                </div>
+<!--                <div class="navigation nav_title_item">-->
+<!--                    <span class="iconfont icon-tm-transition-jump"></span>分类-->
+<!--                </div>-->
+<!--                <div href="#" class="nav_item">-->
+<!--                    <div class="class_nav">-->
+<!--                        <span class="nav_item_href ">数据库</span>-->
+<!--                        <div class="nav_item_subtitle">-->
+<!--                            <span class="icon-xiala iconfont nav_item_icon"></span>-->
+<!--                            <span class="iconfont icon-xiala1"></span>-->
+<!--                            <div class="nav_item_subtitle_item">-->
+<!--                                <div class="nav_item_subtitle_item_title">-->
+<!--                                </div>-->
+<!--                                <a href="#" class="nav_secondary_item">CSS</a>-->
+<!--                                <a href="#" class="nav_secondary_item">JavaScript</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div href="#" class="nav_item">-->
+<!--                    <div class="class_nav">-->
+<!--                        <span class="nav_item_href ">数据库</span>-->
+<!--                        <div class="nav_item_subtitle">-->
+<!--                            <span class="icon-xiala iconfont nav_item_icon"></span>-->
+<!--                            <span class="iconfont icon-xiala1"></span>-->
+<!--                            <div class="nav_item_subtitle_item">-->
+<!--                                <div class="nav_item_subtitle_item_title">-->
+<!--                                </div>-->
+<!--                                <a href="#" class="nav_secondary_item">CSS</a>-->
+<!--                                <a href="#" class="nav_secondary_item">JavaScript</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="header_wrap_right">
+            <div class="search">
+                <input type="search" class="search_val" placeholder="请输入搜索内容...">
+                <input type="submit" class="search_btn" value="SearCh">
+            </div>
+        </div>
+        <div class="search_icon">
+            <span class="iconfont icon-sousuo"></span>
+        </div>
+        <div class="search_mobile">
+            <div class="search">
+                <input type="search" class="search_val" placeholder="请输入搜索内容...">
+                <input type="submit" class="search_btn" value="SearCh">
+            </div>
+        </div>
+        <div class="search_mobile_mask"></div>
+        <div class="mask"></div>
+
+    </div>
+</div>
+

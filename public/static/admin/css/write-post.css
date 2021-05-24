@@ -1,0 +1,81 @@
+.layui-body_wrap {
+  width: 100% !important;
+}
+.layui-body_wrap .write_post_main {
+  padding: 15px;
+}
+.layui-body_wrap .write_post_main .write_post_main_title {
+  height: 35px;
+  font-size: 16px;
+}
+.layui-body_wrap .write_post_main .write_post_main_title input {
+  width: 100%;
+  height: 100%;
+}
+.layui-body_wrap .write_post_main #write_post_main_content {
+  margin-top: 15px;
+  width: 100%;
+  height: 100px;
+}
+.layui-body_wrap .write_post_main .from_submit_wrap {
+  text-align: right;
+}
+.layui-body_wrap .write_post_main .from_submit_wrap .draft {
+  background: var(--border-color-two);
+  color: var(--Info);
+}
+.layui-body_wrap .write_post_attribute {
+  padding: 15px;
+}
+.layui-body_wrap .write_post_attribute .write_post_attribute_title {
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 550;
+}
+.layui-body_wrap .write_post_attribute .article_date {
+  width: 100%;
+}
+.layui-body_wrap .write_post_attribute .write_post_attribute_class {
+  padding: 5px 10px;
+  border: 1px solid var(--border-color-two);
+}
+.layui-body_wrap .write_post_attribute .write_post_attribute_class .write_post_attribute_class_item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+.layui-body_wrap .write_post_attribute .write_post_attribute_class .write_post_attribute_class_item input {
+  margin-right: 5px;
+}
+.layui-body_wrap .write_post_attribute .tag_wrap {
+  padding: 5px 0px;
+  border: 1px solid var(--border-color-two);
+}
+.layui-body_wrap .write_post_attribute .tag_wrap .tag_item {
+  margin: 5px 0;
+  padding: 3px 10px;
+  width: 100%;
+  background: #F3F3F0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+.layui-body_wrap .write_post_attribute .tag_wrap .tag_item a {
+  cursor: pointer;
+  font-size: 12px;
+}
+.layui-body_wrap .write_post_attribute .tag_wrap .tag_input {
+  border: 0;
+  width: 100%;
+}
+.layui-input,
+.layui-textarea {
+  border: 1px solid var(--border-color-two);
+}
+.layui-inline {
+  width: 100%;
+}
+.layui-tab-content {
+  padding: 0;
+}

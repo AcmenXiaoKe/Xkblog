@@ -1,0 +1,164 @@
+{extend name='/themes/default/common' }
+    {block name="header_link"}
+
+
+<!--<link rel="stylesheet" href="/static/admin/lib/editor.md-master/examples/css/style.css" />-->
+<link rel="stylesheet" href="/static/public/editor.md-master/css/editormd.preview.css" />
+<link rel="stylesheet" href="/static/home/css/article.css">
+<link rel="stylesheet" href="/static/home/lib/viewer/css/viewer.min.css">
+<script src="/static/public/editor.md-master/examples/js/jquery.min.js"></script>
+<script src="/static/public/editor.md-master/lib/marked.min.js"></script>
+<script src="/static/public/editor.md-master/lib/prettify.min.js"></script>
+<script src="/static/public/editor.md-master/lib/raphael.min.js"></script>
+<script src="/static/public/editor.md-master/lib/underscore.min.js"></script>
+<script src="/static/public/editor.md-master/lib/sequence-diagram.min.js"></script>
+<script src="/static/public/editor.md-master/lib/flowchart.min.js"></script>
+<script src="/static/public/editor.md-master/lib/jquery.flowchart.min.js"></script>
+<script src="/static/public/editor.md-master/editormd.js"></script>
+    {/block}
+    {block name="header"}
+    {include file='/themes/default/common/header'}
+
+    {/block}
+
+
+    {block name="main"}
+    <div class="wrap">
+        <div class="main">
+            <!-- 主体 -->
+            <div class="main_wrap">
+                <div class="crumbs_nav">
+                    <span class="iconfont icon-shouye"></span>
+                    <a href="#">首页</a><a href="/class/{$Categories['crid']}" style="display: {$Categories['name'] ? 'inline-block' : 'none'}">/{$Categories['name']}</a>/<span>正文</span>
+                </div>
+                <div class="main_box">
+                    <div class="article_class">
+                        <a href="/class/{$Categories['crid']}" class="article_class_item" style="display: {$Categories['name'] ? 'inline-block' : 'none'}">{$Categories['name']}</a>
+                    </div>
+                    <div class="article_title">{$data['title']}</div>
+                    <div class="article_info">
+                        <div class="article_author_info">
+                            <div class="article_author_tx">
+                                <img src="http://q1.qlogo.cn/g?b=qq&nk={$authorInfo.email}&s=640" alt="">
+                            </div>
+                            <div class="article_author_content">
+                                <div class="article_author_name">{$data['author']}</div>
+                                <div class="article_info_content">{$data['release_date'] | date = 'Y-m-d'} / {$data['browse']}阅读 / {$comments_total}评论</div>
+                            </div>
+                        </div>
+                        <div class="article_date">{$data['release_date'] | date = 'm-d'}</div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="article_content" id="ArticleContent"><textarea style="display:none;" placeholder="markdown语言">{$data['content']}</textarea></div>
+                    <div class="article_operation">
+                        <div class="article_praise article_operation_item praise">
+                            <div class="article_praise_wrap">
+                                <span class="iconfont icon-xinaixin"></span>
+                            </div>
+                            <span class="article_operation_item_explain">{$data['praise']}</span>
+                        </div>
+<!--                        <div class="article_praise article_operation_item">-->
+<!--                            <div class="article_praise_wrap">-->
+<!--                                <span class="admire">赏</span>-->
+<!--                            </div>-->
+<!--                            <span class="article_operation_item_explain">赞赏</span>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="article_copyright">
+                        © 版权声明<br>
+                        文章版权归作者所有，未经允许请勿转载。
+
+                    </div>
+                    <div class="entry_page">
+                        <div class="previous entry_page_item" style="opacity: {$previous.aid ? '1' : '0'};">
+                            <a href="{$previous.aid ?  $previous.aid  : '../'}" >
+                                <div class="entry_page_item_bg">
+                                    {empty name='previous.cover'}
+                                    <img src="https://cdn.jsdelivr.net/gh/2998524835/xkblog-Static/assets/thumb/{:mt_rand(1,40)}.jpg" alt="">
+                                    {else/}
+                                    <img src="{$previous.cover}" alt="">
+                                    {/empty}
+                                </div>
+                                <div class="entry_page_item_title entry_page_item_common" style="display: {$previous.aid ? 'block' : 'none'} ">{$previous.title}</div>
+                                <div class="entry_page_item_handle entry_page_item_common" style="display: {$previous.aid ? 'block' : 'none'} ">« 上一篇</div>
+                                <div class="entry_page_item_date entry_page_item_common" style="display: {$previous.aid ? 'block' : 'none'} ">{$previous.release_date | date = 'm-d'}</div>
+                                <div class="black_bg"></div>
+                            </a>
+                        </div>
+                        <div class="next_article entry_page_item" style="opacity: {$next.aid ? '1' : '0'};">
+                            <a href="{$next.aid ?  $next.aid  : '../'}" >
+                                <div class="entry_page_item_bg">
+                                    {empty name='next.cover'}
+                                    <img src="https://cdn.jsdelivr.net/gh/2998524835/xkblog-Static/assets/thumb/{:mt_rand(1,40)}.jpg" alt="">
+                                    {else/}
+                                    <img src="{$next.cover}" alt="">
+                                    {/empty}
+                                </div>
+                                <div class="entry_page_item_title entry_page_item_common" style="display: {$next.aid ? 'block' : 'none'}">{$next.title}</div>
+                                <div class="entry_page_item_handle entry_page_item_common" style="display: {$next.aid ? 'block' : 'none'}">下一篇 »</div>
+                                <div class="entry_page_item_date entry_page_item_common" style="display: {$next.aid ? 'block' : 'none'}">{$next.release_date  | date = 'm-d' }</div>
+                                <div class="black_bg"></div>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="comments_title">评论({$comments_total})</div>
+                    <div class="comments_form">
+                        <div class="comments_form_header">
+                            <input type="hidden" value="{$data.aid}" id="aid">
+                            <input type="text" class="comments_form_header_item" name="author" id="author"
+                                placeholder="请输入昵称...">
+                            <input type="email" class="comments_form_header_item" name="email" id="email"
+                                placeholder="请输入邮箱...">
+                            <input type="text" class="comments_form_header_item The_user_web_site" name="url" id="The_user_web_site"
+                                placeholder="(选填) 请输入网址...">
+
+                        </div>
+                        <div class="comments_form_main">
+                            <textarea name="" placeholder="说点什么呢？" id="comments_form_content" cols="30"
+                                rows="10"></textarea>
+                        </div>
+                        <input type="button" class="comments_form_btn" value="发表">
+                    </div>
+                    <div class="comments_list">
+                        {foreach $comments as $key=>$item}
+                        <div class="comments_list_item">
+                            <div class="comments_list_item_tx">
+                                <img src="http://q1.qlogo.cn/g?b=qq&nk={$item.email}&s=640" alt="">
+                            </div>
+                            <div class="comments_list_item_info">
+                                <div class="comments_list_item_name">{$item.author}</div>
+                                <div class="comments_list_item_content">{$item.content}</div>
+                                <div class="comments_list_item_date">{$item.date  | date = 'Y-m-d'}</div>
+                            </div>
+                        </div>
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+            {include file="/themes/default/common/aside"}
+        </div>
+    </div>
+{/block}
+
+{block name="footer"}
+{include file='/themes/default/common/footer'}
+{/block}
+
+{block name="action"}
+{include file='/themes/default/common/action'}
+{/block}
+{block name="footer_script"}
+
+<script src="/static/public/FilterSensitive.js"></script>
+
+<script src="/static/home/lib/viewer/js/viewer.min.js"></script>
+<script src="/static/home/js/article.js"> </script>
+{/block}
+
+
+
+
+
