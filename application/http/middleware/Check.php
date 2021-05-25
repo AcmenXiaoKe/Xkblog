@@ -64,8 +64,10 @@ class Check extends Controller
 
 
                 // 获取分类
-                $categories = CategoriesModel::name('categories')->select();
+              //  $categories = CategoriesModel::name('categories')->select();
                 // 公共的变量
+                $categoriesData = Db::name('categories')->select();
+                $categories = Rulelayer($categoriesData);
                 $this->assign([
                     'article_total'    =>  getArticleTotal(),
                     'public_comments_total'   =>  getCommentsTotal(),
@@ -75,8 +77,8 @@ class Check extends Controller
                     'NewComments'      =>  $NewComments,
                     'hot'              =>  $hot,
                     'randomArticle'    =>  $randomArticle,
-                    'categories'       =>  $categories,
-                    'TemplateConfig'   =>  $TemplateConfig
+                    'TemplateConfig'   =>  $TemplateConfig,
+                    'categories'       =>  $categories
                 ]);
             }
             // 判断当前模块是否是 admin

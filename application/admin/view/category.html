@@ -17,28 +17,20 @@
                             <form  class="site_set_From">
                                 <div class="Form_item">
                                     <div class="From_item_title">分类名称 *</div>
-                                    <input type="text"  name="name" id="class_name" required class="From_item_input" value="{$data.name ?: ''}">
-                                    <input type="hidden"  id="crid" value="{$data['crid'] ?: '' }">
+                                    <input type="text"  name="name" id="class_name" required class="From_item_input" value="{$data.catname ?: ''}">
+                                    <input type="hidden"  id="catid" value="{$data['catid'] ?: '' }">
                                     <input type="hidden" id="operation" value="{$operation}">
                                 </div>
-<!--                                <div class="Form_item">-->
-<!--                                    <div class="From_item_title">分类缩略名</div>-->
-<!--                                    <input type="text"  name="" class="From_item_input" value="">-->
-<!--                                    <div class="From_item_prompt">分类缩略名用于创建友好的链接形式, 建议使用字母, 数字, 下划线和横杠.</div>-->
-<!--                                </div>-->
-<!--                                <div class="Form_item">-->
-<!--                                    <div class="From_item_title">父级分类</div>-->
-<!--                                    <select name="parent"   id="parent">-->
-<!--                                        <option value="null">不选择</option>-->
-<!--                                      -->
-<!--                                    </select>-->
-<!--                                    <div class="From_item_prompt">此分类将归档在您选择的父级分类下.</div>-->
-<!--                                </div>-->
-<!--                                <div class="Form_item">-->
-<!--                                    <div class="From_item_title">分类描述</div>-->
-<!--                                    <input type="text" class="From_item_input" value="xkblog,php,blog">-->
-<!--                                    <div class="From_item_prompt">此文字用于描述分类, 在有的主题中它会被显示.</div>-->
-<!--                                </div>-->
+                                <div class="Form_item">
+                                    <div class="From_item_title">父级分类</div>
+                                    <select name="pid"   id="parent">
+                                        <option value="0" >不选择</option>
+                                        {foreach $CategoriesData as $key=>$item}
+                                        <option value="{$item.catid}" {$data.pid == $item.catid ? 'selected' : '' } >{$item.catname}</option>
+                                        {/foreach}
+                                    </select>
+                                    <div class="From_item_prompt">此分类将归档在您选择的父级分类下.</div>
+                                </div>
                                 <input type="submit" class="From_submit" value="{$operation == 'insert' ? '新增分类' : '修改分类'}">
                             </form>
                         </div>
@@ -56,14 +48,16 @@
 <script>
 var site_set_From = document.querySelector('.site_set_From')
 site_set_From.onsubmit = function () {
-        let crid = $('#crid').val();
+        let catid = $('#catid').val();
         let operation = $('#operation').val();
+        let pid = $('#parent').val();
     $.ajax({
         type:"POST",
         url:"/admin/category/handle",
         data:{
-            name:$('#class_name').val(),
-            crid,
+            catname:$('#class_name').val(),
+            catid,
+            pid,
             operation
         },
         success:function (result){

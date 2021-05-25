@@ -39,17 +39,17 @@
                         <tbody>
                         {foreach $data as $key=>$item}
                             <tr>
-                                <td>{$item.crid}</td>
+                                <td>{$item.catid}</td>
                                 <td>{$item.name}</td>
                                 <td>{$item.total}</td>
                                 <td>
                                     <div class="article_handle_wrap">
-                                        <a href="/admin/category?crid={$item.crid}"> <button class="article_handle_item edit">
+                                        <a href="/admin/category?catid={$item.catid}"> <button class="article_handle_item edit">
 
                                                 <span class="layui-icon layui-icon-edit article_handle_item_icon"></span>
 
                                         </button> </a>
-                                        <button class="article_handle_item delete" onclick="Datadel({$item.crid})">
+                                        <button class="article_handle_item delete" onclick="Datadel({$item.catid})">
                                             <span class="layui-icon layui-icon-delete article_handle_item_icon" ></span>
                                         </button>
                                     </div>

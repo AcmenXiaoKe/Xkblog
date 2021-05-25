@@ -177,7 +177,7 @@ img {
   flex-direction: column;
   left: 0;
   width: 100%;
-  background: var(--Primary-bg);
+  background: #fff;
 }
 .header_wrap .header_wrap_left .nav .nav_item .nav_item_subtitle .nav_item_subtitle_item .nav_item_subtitle_item_title {
   position: absolute;
@@ -203,9 +203,41 @@ img {
   line-height: 40px;
   text-align: center;
   color: var(--Info);
+  position: relative;
+}
+
+.nav_secondary_item .rulelayer {
+  position: absolute;
+  top: 0px;
+  right: -100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  opacity: 0;
+  transition: all .3s;
+}
+.rulelayer_wrap {
+  width: 100%;
+  background: #fff;
+  margin-left: 5px;
+}
+
+.nav_secondary_item .rulelayer a {
+  color: #000;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 12px;
+}
+
+.nav_secondary_item:hover  > .rulelayer {
+  opacity: 1;
+  display: flex;
+
 }
 .header_wrap .header_wrap_left .nav .nav_item .nav_item_subtitle .nav_item_subtitle_item .nav_secondary_item:hover {
-  background: var(--after-bg);
+  /*background: var(--after-bg);*/
   color: var(--Primary);
 }
 .header_wrap .header_wrap_left .nav .nav_item:hover .nav_item_hover .nav_item_hover_hr {

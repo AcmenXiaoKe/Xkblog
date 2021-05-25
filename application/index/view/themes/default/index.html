@@ -147,8 +147,9 @@
                                     <div class="article_item_info">{$item.release_date | date = 'Y-m-d' }<span class="article_item_statistical">
                                                 / {$item.browse}阅读 / {$item.comments_total}评论 / {$item.praise}点赞</span>
                                     </div>
-                                    <div class="article_item_class" style="display: {$item.Categories['name'] ? 'block' : 'none'}">
-                                        <span class="iconfont icon-tubiao-"></span><a href="#">{$item.Categories['name']}</a>
+                                    <div class="article_item_class" style="display: {$item.Categories[0]['catname'] ? 'block' : 'none'}">
+                                        <span class="iconfont icon-tubiao-" style="transform: translate(0px, 4px);
+    display: inline-block;"></span><a href="/class/{$item.Categories[0]['catid']}">{$item.Categories[0]['catname']}</a>
                                     </div>
                                 </div>
                             </div>

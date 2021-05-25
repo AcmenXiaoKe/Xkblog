@@ -25,15 +25,17 @@ class Index extends Controller
         $article  =  ArticleModel::name('article')->where('state',true)->order("aid desc" )->limit(($page -1) * $size ,$size)->select();
         $Data = [];
         for ($i=0;$i< count((array)$article);$i++) {
-            $CategoriesModel = CategoriesModel::name('categories')->where('crid',$article[$i]['crid'])->find();
+            $catid =explode (",",$article[$i]['catid']);
+            foreach ($catid as $key=>$item) {
+                $CategoriesModel = CategoriesModel::name('categories')->where('catid',$item)->select();
+            }
             $comments_total = CommentsModel::name('comments')->where('aid',$article[$i]['aid'])->count();
-
             $obj = [
                 'aid'           =>  $article[$i]['aid'],
                 'title'         =>  $article[$i]['title'],
                 'release_date'  =>  $article[$i]['release_date'],
                 'content'       =>  $article[$i]['content'],
-                'crid'          =>  $article[$i]['crid'],
+                'crid'          =>  $article[$i]['catid'],
                 'label'         =>  $article[$i]['label'],
                 'browse'        =>  $article[$i]['browse'],
                 'praise'        =>  $article[$i]['praise'],

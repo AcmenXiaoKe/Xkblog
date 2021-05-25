@@ -21,14 +21,19 @@ class Article extends Controller
         }
         $next   = ArticleModel::name('article')->where('aid','>',$id)->order('aid asc')->limit('1')->find();
         $previous  =    ArticleModel::name('article')->where('aid','<',$id)->order('aid desc')->limit('1')->find();
-        $Categories= CategoriesModel::name('categories')->where('crid',$data['crid'])->find();
+        $catid =explode (",",$data['catid']);
+        $CategoriesData = [];
+        foreach ($catid as $key=>$item) {
+            $Categories =  CategoriesModel::name('categories')->where('catid',$item)->find();
+            array_push($CategoriesData,$Categories);
+        }
         $Comments = CommentsModel::name('comments')->where('aid',$id)->where('state',true)->select();
         $authorInfo = UserModel::name('user')->where('name',$data['author'])->find();
         $this->assign([
             'data'          =>      $data,
             'comments'      =>      $Comments,
             'comments_total'=>      count((array)$Comments),
-            'Categories'    =>      $Categories,
+            'Categories'    =>      $CategoriesData,
             'next'          =>      $next,
             'previous'      =>      $previous,
             'authorInfo'    =>      $authorInfo

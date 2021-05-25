@@ -30,11 +30,54 @@
 <!--                <div class="navigation nav_title_item">-->
 <!--                    <span class="iconfont icon-tm-transition-jump"></span>独立页面-->
 <!--                </div>-->
+<!--                <div class="navigation nav_title_item">-->
+<!--                    <span class="iconfont icon-tm-transition-jump"></span>分类-->
+<!--                </div>-->
                 {foreach $categories as $key=>$item}
-                <div href="/class/{$item.crid}" class="nav_item">
-                    <a href="/class/{$item.crid}" class="nav_item_href">{$item.name}</a>
-                    <div class="nav_item_hover">
-                        <div class="nav_item_hover_hr"></div>
+                <div href="#" class="nav_item">
+                    <div class="class_nav">
+                        <a href="/class/{$item.catid}" class="nav_item_href ">{$item.catname}</a>
+                        {if condition = "empty($item.child)"}
+                        {else/}
+                        <div class="nav_item_subtitle">
+                            <span class="icon-xiala iconfont nav_item_icon"></span>
+                            <span class="iconfont icon-xiala1"></span>
+                            <div class="nav_item_subtitle_item">
+                                <div class="nav_item_subtitle_item_title">
+                                </div>
+                                {foreach $item.child as $key=>$item2}
+                                <div href="#" class="nav_secondary_item">
+                                    <a href="/class/{$item2.catid}">{$item2.catname}</a>
+                                    {if condition = "empty($item2.child)"}
+                                    {else/}
+                                    <div class="rulelayer">
+                                        <div class="rulelayer_wrap">
+                                        {foreach $item2.child as $key=>$item3}
+                                        <div href="#" class="nav_secondary_item">
+                                            <a href="/class/{$item3.catid}">{$item3.catname}</a>
+                                            {if condition = "empty($item3.child)"}
+                                            {else/}
+                                            <div class="rulelayer">
+
+                                                <div class="rulelayer_wrap">
+                                                    {foreach $item3.child as $key=>$item4}
+                                                    <div href="#" class="nav_secondary_item">
+                                                        <a href="/class/{$item4.catid}">{$item4.catname}</a>
+                                                    </div>
+                                                    {/foreach}
+                                                </div>
+                                             </div>
+                                            {/if}
+                                        </div>
+                                        {/foreach}
+                                    </div>
+                                    </div>
+                                    {/if}
+                                </div>
+                                {/foreach}
+                            </div>
+                        </div>
+                        {/if}
                     </div>
                 </div>
                 {/foreach}
@@ -44,39 +87,6 @@
                         <div class="nav_item_hover_hr"></div>
                     </div>
                 </div>
-<!--                <div class="navigation nav_title_item">-->
-<!--                    <span class="iconfont icon-tm-transition-jump"></span>分类-->
-<!--                </div>-->
-<!--                <div href="#" class="nav_item">-->
-<!--                    <div class="class_nav">-->
-<!--                        <span class="nav_item_href ">数据库</span>-->
-<!--                        <div class="nav_item_subtitle">-->
-<!--                            <span class="icon-xiala iconfont nav_item_icon"></span>-->
-<!--                            <span class="iconfont icon-xiala1"></span>-->
-<!--                            <div class="nav_item_subtitle_item">-->
-<!--                                <div class="nav_item_subtitle_item_title">-->
-<!--                                </div>-->
-<!--                                <a href="#" class="nav_secondary_item">CSS</a>-->
-<!--                                <a href="#" class="nav_secondary_item">JavaScript</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div href="#" class="nav_item">-->
-<!--                    <div class="class_nav">-->
-<!--                        <span class="nav_item_href ">数据库</span>-->
-<!--                        <div class="nav_item_subtitle">-->
-<!--                            <span class="icon-xiala iconfont nav_item_icon"></span>-->
-<!--                            <span class="iconfont icon-xiala1"></span>-->
-<!--                            <div class="nav_item_subtitle_item">-->
-<!--                                <div class="nav_item_subtitle_item_title">-->
-<!--                                </div>-->
-<!--                                <a href="#" class="nav_secondary_item">CSS</a>-->
-<!--                                <a href="#" class="nav_secondary_item">JavaScript</a>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
         <div class="header_wrap_right">
@@ -99,4 +109,3 @@
 
     </div>
 </div>
-

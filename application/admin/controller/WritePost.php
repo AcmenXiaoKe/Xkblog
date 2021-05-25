@@ -21,22 +21,34 @@ class WritePost extends Controller
 
       if($operation == 'update') {
           $data = ArticleModel::name('article')->where('aid',$aid)->find();
-          $is_categoriest = $data['crid'];
+          $is_categoriest = explode (",",$data['catid']);;
           $label = explode('|',$data['label'])[0] == ''  ? null  : explode('|',$data['label']) ;
           $this->assign([
               'article_title'   =>  $data['title'],
               'content' =>  $data['content'],
               'label'   =>  $label,
-              'is_categories'  =>  $is_categoriest,
               'release_date'   =>   $data['release_date'],
               'aid'            =>   $aid
           ]);
+      }
+      // 处理是否选中的分类
+      foreach ($categories_list as $key=>$item) {
+          foreach($is_categoriest as $key2=>$item2) {
+              if($item['catid'] == $item2) {
+                  $categories_list[$key] = [
+                      'catid'   =>  $item['catid'],
+                      'pid'     =>  $item['pid'],
+                      'catname' =>  $item['catname'],
+                      'flag'    =>  true
+                  ];
+                  break;
+              }
+          }
       }
         $this->assign([
             'operation'  =>  $operation,
             'categories_list'  =>  $categories_list
         ]);
-
       return  $this->fetch('/write-post');
     }
     public function create(Request $request){
@@ -50,7 +62,7 @@ class WritePost extends Controller
             'author'           =>  $data['author'],
             'content'          =>  $data['content'],
             'release_date'     =>  $data['release_date'],
-            'crid'            =>  array_key_exists('crid',$data) ?  $data['crid'] : null,
+            'catid'            =>  array_key_exists('catid',$data) ?  $data['catid'] : null,
             'label'            =>  $is_label == '' ? null : $is_label,
             'browse'           =>  array_key_exists('browse',$data) ? $data['browse'] : 0,
             'praise'           =>  array_key_exists('praise',$data) ? $data['praise'] : 0,

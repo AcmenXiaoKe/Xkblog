@@ -126,7 +126,7 @@ INFO;
                            recommended bool default false ,
                            state bool default true,
                            cover varchar(255) DEFAULT NULL,
-                           crid varchar(255) DEFAULT NULL
+                           catid varchar(255) DEFAULT NULL
 );';
         $xk_comments_table_sql = 'create table xk_comments(
                             cid int primary key auto_increment,
@@ -167,8 +167,9 @@ INFO;
                          foreign key( permissions ) references xk_group (name)
 );';
         $xk_categories_table_sql  = 'create table xk_categories (
-    crid int primary key auto_increment,
-    name varchar (25) not null unique
+    catid int primary key auto_increment,
+    pid int default 0,
+    catname varchar (25) not null unique
 );';
 
         Db::execute($xk_group_table_sql);
@@ -205,8 +206,8 @@ INFO;
         $optionsData = "insert into xk_options (name, url, description, keywords) values ('小柯博客','http://xkblog.xkbk.top/','小柯博客，是专注于业界、互联网、搜索引擎优化、社会化网络、IT技术、谷歌地图、建站、软件等领域的原创IT科技博客.','小柯博客，小柯前端工程师，学习前端');";
         Db::execute($optionsData);
         Db::name('categories')->insert([
-            'crid'      =>  1,
-            'name'      =>  '默认分类'
+            'catid'      =>  1,
+            'catname'      =>  '默认分类'
         ]);
         Db::name('user')->insert([
             'username'          =>  $data['admin_username'],
@@ -220,7 +221,7 @@ INFO;
             'title'         =>      '欢迎使用 Xkblog',
             'author'        =>      $data['admin_name'],
             'content'       =>      '如果您看到这篇文章,表示您的 blog 已经安装成功.',
-            'crid'          =>      1
+            'catid'          =>      "['1']"
         ]);
         Db::name('comments')->insert([
             'aid'           =>       1,

@@ -29,11 +29,13 @@
             <div class="main_wrap">
                 <div class="crumbs_nav">
                     <span class="iconfont icon-shouye"></span>
-                    <a href="#">首页</a><a href="/class/{$Categories['crid']}" style="display: {$Categories['name'] ? 'inline-block' : 'none'}">/{$Categories['name']}</a>/<span>正文</span>
+                    <a href="#">首页 /</a>{foreach $Categories as $key=>$item}<a href="/class/{$item.catid}">{$item.catname} /</a>{/foreach}<span>正文</span>
                 </div>
                 <div class="main_box">
                     <div class="article_class">
-                        <a href="/class/{$Categories['crid']}" class="article_class_item" style="display: {$Categories['name'] ? 'inline-block' : 'none'}">{$Categories['name']}</a>
+                        {foreach $Categories as $key=>$item}
+                        <a href="/class/{$item.catid}" class="article_class_item">{$item.catname}</a>
+                        {/foreach}
                     </div>
                     <div class="article_title">{$data['title']}</div>
                     <div class="article_info">

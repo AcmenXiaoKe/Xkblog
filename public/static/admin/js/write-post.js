@@ -81,20 +81,23 @@ $(function () {
         // 作者
         let author = $('#author').val();
         // 分类元素
-        let write_post_class = document.querySelectorAll('.write_post_class')
+        let write_post_class = document.querySelectorAll('#write_post_class')
         // 处理好的分类字符串
         let class_list = ''
         // 循环获取选中的分类
         for(var i= 0; i < write_post_class.length; i++) {
+            console.log(write_post_class[i].checked)
             if(write_post_class[i].checked) {
-                    class_list = write_post_class[i].value + "|" + class_list
+                // console.log(write_post_class[i].value)
+                    class_list +=  write_post_class[i].value + ','
             }
         }
+        class_list = DelLastStr(class_list)
         // 标签
         let tag_item = document.querySelectorAll('.tag_item span')
         let tag_list = ''
         for(var i= 0; i < tag_item.length; i++) {
-            tag_list = tag_item[i].innerText + "|" + tag_list
+            tag_list += tag_item[i].innerText + "|"
         }
         if(title === '') {
             layer.open({
@@ -126,7 +129,7 @@ $(function () {
                 content,
                 release_date:article_date,
                 author,
-                crid,
+                catid: class_list,
                 label:DelLastStr(tag_list),
                 operation,
                 aid:$('#aid').val(),
@@ -137,7 +140,7 @@ $(function () {
                 content,
                 release_date:article_date,
                 author,
-                crid,
+                catid: class_list,
                 label:DelLastStr(tag_list),
                 operation,
             }

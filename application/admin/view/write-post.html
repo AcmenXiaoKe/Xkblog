@@ -53,7 +53,7 @@
     align-items: flex-start;">
                                                 {foreach $categories_list as $key => $item}
                                                 <div>
-                                                    <input type="Radio" {$is_categories ?: ''  == $item.crid ? 'checked' : ''}   name="name" class="write_post_crid"    value="{$item.crid}" > {$item.name}
+                                                    <input id="write_post_class" type="checkbox"   {$item.flag ?: false  ?  'checked' : '' }      class="write_post_crid"    value="{$item.catid}" > {$item.catname}
                                                 </div>
                                                 {/foreach}
                                             </div>
