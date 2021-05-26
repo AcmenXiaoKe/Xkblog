@@ -831,7 +831,23 @@ footer .footer .Copyright a {
 .class_nav {
   display: flex !important;
 }
+.mobile_model {
+  display: none;
+  flex-direction: column;
+
+}
+.mobile_model_item {
+  font-size: 14px;
+  margin: 5px 0;
+  color: var(--Primary-Text);
+}
+
+
+
 @media screen and (max-width: 1049px) {
+  .mobile_model {
+    display: flex;
+  }
   .header_author {
     display: flex;
   }
@@ -872,6 +888,7 @@ footer .footer .Copyright a {
     margin-left: 0px !important;
     padding-left: 15px !important;
     font-size: 12px;
+    display: none !important;
   }
   .header_wrap .nav .nav_item .nav_item_hover_hr {
     display: none;

@@ -78,7 +78,8 @@ class Check extends Controller
                     'hot'              =>  $hot,
                     'randomArticle'    =>  $randomArticle,
                     'TemplateConfig'   =>  $TemplateConfig,
-                    'categories'       =>  $categories
+                    'categories'       =>  $categories,
+                    'categoriesData'  =>   $categoriesData
                 ]);
             }
             // 判断当前模块是否是 admin

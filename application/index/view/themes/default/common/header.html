@@ -26,13 +26,8 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
-<!--                <div class="navigation nav_title_item">-->
-<!--                    <span class="iconfont icon-tm-transition-jump"></span>独立页面-->
-<!--                </div>-->
-<!--                <div class="navigation nav_title_item">-->
-<!--                    <span class="iconfont icon-tm-transition-jump"></span>分类-->
-<!--                </div>-->
                 {foreach $categories as $key=>$item}
                 <div href="#" class="nav_item">
                     <div class="class_nav">
@@ -86,6 +81,12 @@
                     <div class="nav_item_hover">
                         <div class="nav_item_hover_hr"></div>
                     </div>
+                </div>
+                <div class="mobile_model">
+                    {foreach $categoriesData as $key=>$item}
+                    <a href="/class/{$item.catid}" class="mobile_model_item">{$item.catname}</a>
+                    {/foreach}
+                    <a href="/link" class="mobile_model_item">友联</a>
                 </div>
             </div>
         </div>
