@@ -1,6 +1,11 @@
 {extend name='common'}
 {block name="link"}
 <link rel="stylesheet" href="/static/admin/css/site_set.css">
+<style>
+  .Form_item_radio {
+    margin: 0 5px;
+  }
+</style>
 {/block}
 
 {block name="header"}
@@ -33,6 +38,13 @@
               <input type="text"   class="From_item_input From_item_input_name" name="live2dModel" value="{$data.live2dModel ? $data.live2dModel : ''}">
               <div class="From_item_prompt">用于首页右下角的模型</div>
               <div class="From_item_prompt">注意：文件夹下必须存在 model.json 否则加载失败</div>
+            </div>
+            <div class="Form_item">
+              <div class="From_item_title">
+                是否允许评论</div>
+              <input type="radio" name="comments" {$data.comments == 1 ? 'checked' : ''} class="Form_item_radio" value="1">允许
+              <input type="radio" name="comments" {$data.comments == 0 ? 'checked' : ''} class="Form_item_radio" value="0">不允许
+              <div class="From_item_prompt">用于设置前台是否允许评论</div>
             </div>
             <input type="submit" class="From_submit" value="保存设置">
           </form>

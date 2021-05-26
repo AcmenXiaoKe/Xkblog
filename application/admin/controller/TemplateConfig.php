@@ -27,6 +27,7 @@ return [
     'logo'              =>      '{$result['logo']}',
     'Introduction'      =>      '{$result['Introduction']}',
     'live2dModel'       =>       '{$result['live2dModel']}',
+    'comments'          =>       '{$result['comments']}',  
 ]; 
 INFO;
         file_put_contents(Env::get('config_path').'TemplateConfig.php', $code);

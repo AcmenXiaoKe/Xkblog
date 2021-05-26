@@ -83,7 +83,7 @@ function editState ($request,$table,$idName){
     return json(res($result,'修改成功！',200));
 }
 
- function Rulelayer($rule,$pid=0)
+function Rulelayer($rule,$pid=0)
 {
     $arr = array();
 

@@ -105,22 +105,23 @@
 
                     </div>
                 </div>
+                {if $TemplateConfig.comments}
                 <div class="comments">
                     <div class="comments_title">评论({$comments_total})</div>
                     <div class="comments_form">
                         <div class="comments_form_header">
                             <input type="hidden" value="{$data.aid}" id="aid">
                             <input type="text" class="comments_form_header_item" name="author" id="author"
-                                placeholder="请输入昵称...">
+                                   placeholder="请输入昵称...">
                             <input type="email" class="comments_form_header_item" name="email" id="email"
-                                placeholder="请输入邮箱...">
+                                   placeholder="请输入邮箱...">
                             <input type="text" class="comments_form_header_item The_user_web_site" name="url" id="The_user_web_site"
-                                placeholder="(选填) 请输入网址...">
+                                   placeholder="(选填) 请输入网址...">
 
                         </div>
                         <div class="comments_form_main">
                             <textarea name="" placeholder="说点什么呢？" id="comments_form_content" cols="30"
-                                rows="10"></textarea>
+                                      rows="10"></textarea>
                         </div>
                         <input type="button" class="comments_form_btn" value="发表">
                     </div>
@@ -139,6 +140,11 @@
                         {/foreach}
                     </div>
                 </div>
+                {else/}
+                      <!-- 关闭了评论-->
+                {/if}
+
+
             </div>
             {include file="/themes/default/common/aside"}
         </div>
