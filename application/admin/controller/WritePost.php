@@ -30,18 +30,18 @@ class WritePost extends Controller
               'release_date'   =>   $data['release_date'],
               'aid'            =>   $aid
           ]);
-      }
-      // 处理是否选中的分类
-      foreach ($categories_list as $key=>$item) {
-          foreach($is_categoriest as $key2=>$item2) {
-              if($item['catid'] == $item2) {
-                  $categories_list[$key] = [
-                      'catid'   =>  $item['catid'],
-                      'pid'     =>  $item['pid'],
-                      'catname' =>  $item['catname'],
-                      'flag'    =>  true
-                  ];
-                  break;
+          // 处理是否选中的分类
+          foreach ($categories_list as $key=>$item) {
+              foreach($is_categoriest as $key2=>$item2) {
+                  if($item['catid'] == $item2) {
+                      $categories_list[$key] = [
+                          'catid'   =>  $item['catid'],
+                          'pid'     =>  $item['pid'],
+                          'catname' =>  $item['catname'],
+                          'flag'    =>  true
+                      ];
+                      break;
+                  }
               }
           }
       }
