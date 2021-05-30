@@ -1,0 +1,45 @@
+img {
+    border: 0;
+    vertical-align: middle;
+    object-fit: cover;
+}
+.template_title {
+    display: flex;
+    margin: 15px 0;
+}
+.template_left {
+    width: 30%;
+}
+.template_item_left {
+    padding: 15px;
+}
+.template_item_left img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 3px;
+}
+.template_right {
+    padding: 0 15px;
+    width: 70%;
+}
+.template_item {
+    display: flex;
+    height: 255px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.template_item_right {
+    padding: 15px;
+}
+.template_item_title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+.template_item_author {
+    color: #999;
+}
+.template_item_abstract {
+    color: #222;
+    margin: 15px 0;
+}

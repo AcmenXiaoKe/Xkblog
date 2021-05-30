@@ -1,6 +1,7 @@
 {extend name='common'}
 {block name="link"}
 <link rel="stylesheet" href="/static/admin/css/site_set.css">
+<link rel="stylesheet" href="/static/admin/css/template.css">
 <style>
   .Form_item_radio {
     margin: 0 5px;
@@ -17,37 +18,43 @@
   <!-- 内容主体区域 -->
   <div class="layui-body_box">
     <div class="layui-body_wrap">
-      <div class="layui-body_wrap_title">模板设置</div>
+      <div class="layui-body_wrap_title">外观设置</div>
       <div class="layui-row">
         <div class="layui-col-xs12  layui-col-md8 layui-col-md-offset2">
-          <form action="/admin/template_config/edit" method="post" class="site_set_From">
-            <div class="Form_item">
-              <div class="From_item_title">网站Logo</div>
-              <input type="text"  required class="From_item_input From_item_input_name" name="logo" value="{$data.logo ? $data.logo  : ''}">
-              <div class="From_item_prompt">用于设置网站 Logo，一个好的 Logo 能为网站带来有效的流量</div>
+          <div class="layui-tab">
+            <ul class="layui-tab-title">
+              <li class="layui-this">可以使用的模板</li>
+              <li>设置模板</li>
+            </ul>
+            <div class="layui-tab-content">
+              <div class="layui-tab-item layui-show">
+                <div class="template_title">
+                  <div class="template_left">预览</div>
+                  <div class="template_right">详细</div>
+                </div>
+                <div class="template_item">
+                  <div class="template_left template_item_left">
+                    <img src="/static/simple/preview.png" alt="">
+                  </div>
+                  <div class="template_right template_item_right">
+                    <div class="template_item_title">Simple</div>
+                    <div class="template_item_author">作者：Xkblog</div>
+                    <div class="template_item_abstract">这是 Xkblog 系统的一套简约的皮肤</div>
+                  </div>
+                </div>
+                <div class="template_item">
+                  <div class="template_left template_item_left">
+                    <img src="/static/simple/preview.png" alt="">
+                  </div>
+                  <div class="template_right template_item_right">
+                    <div class="template_item_title">Simple</div>
+                    <div class="template_item_author">作者：Xkblog</div>
+                    <div class="template_item_abstract">这是 Xkblog 系统的一套简约的皮肤</div>
+                  </div>
+                </div>
+              </div>
+              <div class="layui-tab-item">55</div>
             </div>
-            <div class="Form_item">
-              <div class="From_item_title">
-                博主栏座右铭（一言)</div>
-              <input type="text"  required class="From_item_input From_item_input_name" name="Introduction" value="{$data.Introduction}">
-              <div class="From_item_prompt">用于修改博主栏的座右铭（一言）</div>
-            </div>
-            <div class="Form_item">
-              <div class="From_item_title">
-                Live2D模型地址</div>
-              <input type="text"   class="From_item_input From_item_input_name" name="live2dModel" value="{$data.live2dModel ? $data.live2dModel : ''}">
-              <div class="From_item_prompt">用于首页右下角的模型</div>
-              <div class="From_item_prompt">注意：文件夹下必须存在 model.json 否则加载失败</div>
-            </div>
-            <div class="Form_item">
-              <div class="From_item_title">
-                是否允许评论</div>
-              <input type="radio" name="comments" {$data.comments == 1 ? 'checked' : ''} class="Form_item_radio" value="1">允许
-              <input type="radio" name="comments" {$data.comments == 0 ? 'checked' : ''} class="Form_item_radio" value="0">不允许
-              <div class="From_item_prompt">用于设置前台是否允许评论</div>
-            </div>
-            <input type="submit" class="From_submit" value="保存设置">
-          </form>
         </div>
       </div>
 

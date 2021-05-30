@@ -11,6 +11,7 @@ use think\Request;
 class OptionsGeneral extends Controller
 {
     public function index(){
+
         $web_options = web_options();
         $this->assign('options',$web_options);
        return $this->fetch('/OptionsGeneral');
