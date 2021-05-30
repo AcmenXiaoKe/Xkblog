@@ -1,0 +1,125 @@
+:root {
+  --content-color: #666;
+}
+main .article {
+  margin-top: 25px;
+}
+main .article .article_item {
+  margin: 20px  15px;
+  height: 165px;
+  display: flex;
+}
+main .article .article_item .article_item_cover {
+  width: 25%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+main .article .article_item .article_item_cover img {
+  width: 100%;
+  height: 100%;
+}
+main .article .article_item .article_item_main {
+  position: relative;
+  width: 75%;
+  height: 100%;
+  padding: 15px;
+}
+main .article .article_item .article_item_main .article_item_title {
+  font-size: 18px;
+  font-weight: 650;
+  color: var(--title-color);
+}
+main .article .article_item .article_item_main .article_item_content {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--content-color);
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+main .article .article_item .article_item_main .article_item_Info {
+  position: absolute;
+  padding: 0 15px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: var(--info);
+  display: flex;
+  font-size: 12px;
+}
+main .article .article_item .article_item_main .article_item_Info .article_item_Info_item {
+  display: flex;
+  margin: 0 5px;
+  justify-content: center;
+  align-items: center;
+}
+main .article .article_item .article_item_main .article_item_Info .article_item_Info_item_icon {
+  margin: 0 3px;
+  width: 15px;
+  height: 15px;
+  fill: var(--info);
+}
+main .article .article_item .article_item_main .article_item_Info a {
+  color: var(--info);
+  transform: translate(0px, -2px);
+  display: inline-block;
+}
+.paging {
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.paging .paging_item {
+  cursor: pointer;
+  padding: 7px 18px;
+  margin: 20px 0;
+  border: 1px solid #d6d7db;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.paging .paging_item a {
+  color: #363636;
+}
+.paging .paging_item:hover {
+  background: var(--Primary);
+  color: #fff;
+}
+.paging .paging_item:hover a {
+  color: #fff;
+}
+@media screen and (max-width: 761px) {
+  main .article .article_item .article_item_cover {
+    width: 30%;
+  }
+  main .article .article_item .article_item_main {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 602px) {
+  .hot,
+  .praise,
+  .comments {
+    display: none !important;
+  }
+  main .article .article_item {
+    height: 80px;
+  }
+  main .article .article_item .article_item_main .article_item_content {
+    display: none;
+  }
+  main .article .article_item .article_item_main .article_item_title {
+    font-size: 16px;
+  }
+  main .article .article_item .article_item_main {
+    padding: 0px 15px;
+  }
+}
+@media screen and (max-width: 334px) {
+  .class {
+    display: none !important;
+  }
+}

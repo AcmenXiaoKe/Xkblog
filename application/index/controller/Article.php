@@ -14,6 +14,7 @@ use app\admin\model\User as UserModel;
 class Article extends Controller
 {
     public function index($id){
+        $url = \think\facade\Request::url(true);
         $data = ArticleModel::name('article')->where('aid',$id)->where('state',true)->find();
         // 如果文章不存在就抛出异常
         if($data === null) {
@@ -36,7 +37,8 @@ class Article extends Controller
             'Categories'    =>      $CategoriesData,
             'next'          =>      $next,
             'previous'      =>      $previous,
-            'authorInfo'    =>      $authorInfo
+            'authorInfo'    =>      $authorInfo,
+            'url'           =>      $url,
         ]);
         ArticleModel::name('article')->where('aid',$id)->inc('browse',1)->update();
         return $this->fetch(TMPL_PATH.'/article');

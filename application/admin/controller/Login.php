@@ -14,7 +14,8 @@ class Login extends Controller
 {
     public function index()
     {
-
+        $web_options = web_options();
+        $this->assign('web_options',$web_options);
         return $this->fetch('/login');
     }
     public function check(Request $request)
