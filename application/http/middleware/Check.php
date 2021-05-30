@@ -34,6 +34,7 @@ class Check extends Controller
         if(!file_exists('install.lock')) {
             return redirect('/install');
         } else {
+            $web_options = include Env::get('config_path').'siteconfig.php';
             // 判断是否是登陆页面的 控制器 如果是 直接返回
             if($request->controller() == 'Login') {
                 return  $next($request);
@@ -43,7 +44,6 @@ class Check extends Controller
                 $TemplateConfig = include Env::get('config_path').'TemplateConfig.php';
                 $labelDate  = LabelModel::name('label')->select();
                 $NewComments = CommentsModel::name('comments')->limit(5)->order("cid desc")->select();
-                $web_options = web_options();
                 $this->assign('web_options',$web_options);
                 // 获取热门文章
                 $hot = ArticleModel::name('article')->where('state',true)->order('browse desc')->limit(3)->select();
@@ -84,7 +84,6 @@ class Check extends Controller
             }
             // 判断当前模块是否是 admin
             if($request->module() == 'admin') {
-                $web_options = web_options();
                 // 公共的变量
                 $this->assign([
                     'name'  =>  getUserInfo()['name'],
