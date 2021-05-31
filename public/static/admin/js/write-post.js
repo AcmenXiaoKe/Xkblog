@@ -3,7 +3,7 @@ $(function () {
         watch: false,
         // width  : "100%",
         // height : "100%",
-        path: "/static/public/editor.md-master/lib/",
+        path: "/static/admin/lib/editor.md-master/lib/",
         width: "100%",
         height: '400px',
         // theme: "dark",

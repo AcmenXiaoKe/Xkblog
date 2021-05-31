@@ -15,12 +15,12 @@ class TemplateConfig extends Controller
         $templatePath = include Env::get('config_path').'siteconfig.php';
         $templateList = [];
         $templateConfigData = [];
-        $file = scandir('static/');
+        $file = scandir('static/template/');
         unset($file[0]);
         unset($file[1]);
         foreach ($file as $key=>$item) {
             try {
-                $fileStr = 'static/'.$item.'/package.php';
+                $fileStr = 'static/template/'.$item.'/package.php';
                 $templateConfig = include $fileStr;
                 if(strtolower($templateConfig['name']) == strtolower($templatePath['template'])) {
                     $templateConfig = [

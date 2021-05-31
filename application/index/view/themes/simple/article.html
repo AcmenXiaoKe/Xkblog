@@ -1,18 +1,18 @@
 {extend name='/themes/simple/common' }
 {block name="header_link"}
-    <link rel="stylesheet" href="/static/simple/css/viewer.min.css">
-    <link rel="stylesheet" href="/static/simple/lib/editor/css/editormd.preview.css" />
-    <script src="/static/simple/lib/editor/js/jquery.min.js"></script>
-    <script src="/static/simple/lib/editor/js/marked.min.js"></script>
-    <script src="/static/simple/lib/editor/js/prettify.min.js"></script>
-    <script src="/static/simple/lib/editor/js/raphael.min.js"></script>
-    <script src="/static/simple/lib/editor/js/underscore.min.js"></script>
-    <script src="/static/simple/lib/editor/js/sequence-diagram.min.js"></script>
-    <script src="/static/simple/lib/editor/js/flowchart.min.js"></script>
-    <script src="/static/simple/lib/editor/js/jquery.flowchart.min.js"></script>
-    <script src="/static/simple/lib/editor/js/editormd.js"></script>
-    <link rel="stylesheet" href="/static/simple/css/editor.css">
-    <link rel="stylesheet" href="/static/simple/css/article.css">
+    <link rel="stylesheet" href="/static/template/simple/css/viewer.min.css">
+    <link rel="stylesheet" href="/static/template/simple/lib/editor/css/editormd.preview.css" />
+    <script src="/static/template/simple/lib/editor/js/jquery.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/marked.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/prettify.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/raphael.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/underscore.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/sequence-diagram.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/flowchart.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/jquery.flowchart.min.js"></script>
+    <script src="/static/template/simple/lib/editor/js/editormd.js"></script>
+    <link rel="stylesheet" href="/static/template/simple/css/editor.css">
+    <link rel="stylesheet" href="/static/template/simple/css/article.css">
 {/block}
 
 {block name="header"}
@@ -99,7 +99,6 @@
             </div>
         </div>
     </main>
-{if $TemplateConfig.comments}
 <div class="comments wrap">
     <div class="comments_title">
         <svg t="1622082159717" class="comments_title_icon" viewBox="0 0 1024 1024" version="1.1"
@@ -143,9 +142,6 @@
         {/foreach}
     </div>
     {/if}
-    {else/}
-    <!-- 关闭了评论-->
-    {/if}
 </div>
 
 {/block}
@@ -160,7 +156,7 @@
 
 {block name="footer_script"}
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="/static/simple/js/FilterSensitive.js"></script>
-    <script src="/static/simple/js/viewer.min.js"></script>
-    <script src="/static/simple/js/article.js"></script>
+    <script src="/static/template/simple/js/FilterSensitive.js"></script>
+    <script src="/static/template/simple/js/viewer.min.js"></script>
+    <script src="/static/template/simple/js/article.js"></script>
 {/block}
