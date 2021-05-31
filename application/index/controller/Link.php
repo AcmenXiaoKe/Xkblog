@@ -5,6 +5,7 @@ namespace app\index\controller;
 
 
 use think\Controller;
+use think\facade\Env;
 use think\facade\Validate;
 use think\Request;
 use app\admin\model\Link as LinkModel;
@@ -13,13 +14,14 @@ class Link extends Controller
 {
     public function index()
     {
+        $templatePath = include Env::get('config_path').'siteconfig.php';
         $url =  $this->request->scheme() . '://' . $this->request->host() . '/';
         $data=  LinkModel::name('link')->where('state',true)->select();
         $this->assign([
             'url'       =>  $url,
             'data'      =>  $data
         ]);
-     return   $this->fetch(TMPL_PATH.'/link');
+     return   $this->fetch(TMPL_PATH.$templatePath['template'].'/link');
     }
     public function ApplyFor (Request $request)
     {

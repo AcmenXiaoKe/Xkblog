@@ -43,3 +43,12 @@ img {
     color: #222;
     margin: 15px 0;
 }
+.template_item_btn {
+    margin: 20px 0;
+    padding: 3px 10px;
+    border: 0;
+    color: #fff;
+    background: var(--Primary);
+    border-radius: 3px;
+    cursor: pointer;
+}

@@ -13,12 +13,13 @@
 namespace think;
 
 // 加载基础文件
+use think\facade\Env;
+
 require __DIR__ . '/../thinkphp/base.php';
 
 // 支持事先使用静态方法设置Request对象和Config对象
-
 // 定义模板路径
-define('TMPL_PATH','themes/simple/');
+define('TMPL_PATH','themes/');
 
 // 执行应用并响应
 Container::get('app')->run()->send();

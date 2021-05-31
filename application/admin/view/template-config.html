@@ -32,28 +32,34 @@
                   <div class="template_left">预览</div>
                   <div class="template_right">详细</div>
                 </div>
-                <div class="template_item">
+                {foreach $template as $key=>$item}
+                <div class="template_item" style="{$item.status  ?  'background: rgba(64,158,255,.1);
+              border: 0px;' : ''};">
                   <div class="template_left template_item_left">
-                    <img src="/static/simple/preview.png" alt="">
+                    <img src="{$item.preview}" alt="">
                   </div>
                   <div class="template_right template_item_right">
-                    <div class="template_item_title">Simple</div>
-                    <div class="template_item_author">作者：Xkblog</div>
-                    <div class="template_item_abstract">这是 Xkblog 系统的一套简约的皮肤</div>
+                    <div class="template_item_title">{$item.name}</div>
+                    <div class="template_item_author">作者：{$item.author}</div>
+                    <div class="template_item_abstract">{$item.abstract}</div>
+                    <button class="template_item_btn" onclick="template_edit('{$item.name}')" style="display:{$item.status  ?  'none' : 'block'};">启用</button>
                   </div>
                 </div>
-                <div class="template_item">
-                  <div class="template_left template_item_left">
-                    <img src="/static/simple/preview.png" alt="">
+                {/foreach}
+
+              </div>
+              <div class="layui-tab-item">
+                <div class="template_config">
+                  {foreach $templateConfigData as $key=>$item}
+                  <div class="template_config_item">
+                    <div class="From_item_title">{$item.title}</div>
+                    <input type="{$item.type}"  data-type="{$item.type}" data-title="{$item.title}" data-prompt="{$item.prompt}" class="From_item_input" id="{$key}" value="{$item.val}" name="{$key}">
+                    <div class="From_item_prompt">{$item.prompt}</div>
                   </div>
-                  <div class="template_right template_item_right">
-                    <div class="template_item_title">Simple</div>
-                    <div class="template_item_author">作者：Xkblog</div>
-                    <div class="template_item_abstract">这是 Xkblog 系统的一套简约的皮肤</div>
-                  </div>
+                  {/foreach}
+                  <button class="From_submit">保存设置</button>
                 </div>
               </div>
-              <div class="layui-tab-item">55</div>
             </div>
         </div>
       </div>
@@ -68,4 +74,60 @@
 
 
 {block name="footer_script"}
+  <script>
+    function template_edit(name) {
+      let val =  name.toLowerCase()
+      $.ajax({
+        type:"post",
+        url:"/admin/template_config/edit",
+        data:{
+          name:val
+        },
+        success:function (result){
+          if(result.meta.status !==200) {
+            alert('出现未知错误！')
+          }
+          window.location.href="/admin/template_config"
+        },
+        error:function (err){}
+      })
+    }
+
+    let From_submit = document.querySelector('.From_submit')
+    From_submit.addEventListener('click',function (){
+      let form_list = document.querySelectorAll('.template_config input')
+      let form_str = '';
+      let form_list_data = [];
+      form_list.forEach(item=>{
+        let title = item.getAttribute('data-title')
+        let val = item.value
+        let name = item.name
+        let type = item.getAttribute('data-type')
+        let prompt   = item.getAttribute('data-prompt')
+        form_str += `'${name}'      =>      [
+        'title'         =>      '${title}',
+        'prompt'        =>      '${prompt}',
+        'val'           =>      '${val}',
+        'type'          =>      '${type}',
+    ],`
+      })
+      form_str  = 'return [' + form_str + '];'
+
+    $.ajax({
+      type:"post",
+      data:{
+        str:form_str
+      },
+      url:"/admin/template_config/config",
+      success:function (res){
+        if(res.meta.status !==200) {
+          alert('保存失败！')
+          return
+        }
+        alert('保存成功！')
+      },
+      error:function (err ){}
+    })
+    })
+  </script>
 {/block}

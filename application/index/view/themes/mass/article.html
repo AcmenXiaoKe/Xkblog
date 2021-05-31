@@ -1,23 +1,23 @@
-{extend name='/themes/default/common' }
+{extend name='/themes/mass/common' }
     {block name="header_link"}
 
 
 <!--<link rel="stylesheet" href="/static/admin/lib/editor.md-master/examples/css/style.css" />-->
-<link rel="stylesheet" href="/static/public/editor.md-master/css/editormd.preview.css" />
-<link rel="stylesheet" href="/static/home/css/article.css">
-<link rel="stylesheet" href="/static/home/lib/viewer/css/viewer.min.css">
-<script src="/static/public/editor.md-master/examples/js/jquery.min.js"></script>
-<script src="/static/public/editor.md-master/lib/marked.min.js"></script>
-<script src="/static/public/editor.md-master/lib/prettify.min.js"></script>
-<script src="/static/public/editor.md-master/lib/raphael.min.js"></script>
-<script src="/static/public/editor.md-master/lib/underscore.min.js"></script>
-<script src="/static/public/editor.md-master/lib/sequence-diagram.min.js"></script>
-<script src="/static/public/editor.md-master/lib/flowchart.min.js"></script>
-<script src="/static/public/editor.md-master/lib/jquery.flowchart.min.js"></script>
-<script src="/static/public/editor.md-master/editormd.js"></script>
+<link rel="stylesheet" href="/static/mass/public/editor.md-master/css/editormd.preview.css" />
+<link rel="stylesheet" href="/static/mass/home/css/article.css">
+<link rel="stylesheet" href="/static/mass/home/lib/viewer/css/viewer.min.css">
+<script src="/static/mass/public/editor.md-master/examples/js/jquery.min.js"></script>
+<script src="/static/mass/public/editor.md-master/lib/marked.min.js"></script>
+<script src="/static/mass/public/editor.md-master/lib/prettify.min.js"></script>
+<script src="/static/mass/public/editor.md-master/lib/raphael.min.js"></script>
+<script src="/static/mass/public/editor.md-master/lib/underscore.min.js"></script>
+<script src="/static/mass/public/editor.md-master/lib/sequence-diagram.min.js"></script>
+<script src="/static/mass/public/editor.md-master/lib/flowchart.min.js"></script>
+<script src="/static/mass/public/editor.md-master/lib/jquery.flowchart.min.js"></script>
+<script src="/static/mass/public/editor.md-master/editormd.js"></script>
     {/block}
     {block name="header"}
-    {include file='/themes/default/common/header'}
+    {include file='/themes/mass/common/header'}
 
     {/block}
 
@@ -105,7 +105,7 @@
 
                     </div>
                 </div>
-                {if $TemplateConfig.comments}
+
                 <div class="comments">
                     <div class="comments_title">评论({$comments_total})</div>
                     <div class="comments_form">
@@ -140,30 +140,26 @@
                         {/foreach}
                     </div>
                 </div>
-                {else/}
-                      <!-- 关闭了评论-->
-                {/if}
-
 
             </div>
-            {include file="/themes/default/common/aside"}
+            {include file="/themes/mass/common/aside"}
         </div>
     </div>
 {/block}
 
 {block name="footer"}
-{include file='/themes/default/common/footer'}
+{include file='/themes/mass/common/footer'}
 {/block}
 
 {block name="action"}
-{include file='/themes/default/common/action'}
+{include file='/themes/mass/common/action'}
 {/block}
 {block name="footer_script"}
 
-<script src="/static/public/FilterSensitive.js"></script>
+<script src="/static/mass/public/FilterSensitive.js"></script>
 
-<script src="/static/home/lib/viewer/js/viewer.min.js"></script>
-<script src="/static/home/js/article.js"> </script>
+<script src="/static/mass/home/lib/viewer/js/viewer.min.js"></script>
+<script src="/static/mass/home/js/article.js"> </script>
 {/block}
 
 

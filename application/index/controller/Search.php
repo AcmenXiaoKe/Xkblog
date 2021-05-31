@@ -7,12 +7,14 @@ namespace app\index\controller;
 use app\admin\model\Categories as CategoriesModel;
 use app\admin\model\Comments as CommentsModel;
 use think\Controller;
+use think\facade\Env;
 use think\Request;
 use app\admin\model\Article as ArticleModel;
 
 class Search extends Controller
 {
     public function index($val){
+        $templatePath = include Env::get('config_path').'siteconfig.php';
       $data = ArticleModel::name('article')->where('state',true)->where('content','like',('%'.$val.'%'))->select();
       $Data = [];
        for ($i=0;$i< count((array)$data);$i++) {
@@ -44,9 +46,10 @@ class Search extends Controller
           'data_total'   =>  count((array)$data)
       ]);
 //       return  json($Data);
-      return  $this->fetch(TMPL_PATH.'/search');
+      return  $this->fetch(TMPL_PATH.$templatePath['template'].'/search');
     }
     public function category($id){
+        $templatePath = include Env::get('config_path').'siteconfig.php';
         $Categories_data = CategoriesModel::name('categories')->where('catid',$id)->find();
         $data = ArticleModel::name('article')->where('state',true)->where('catid','like',('%'.$id.'%'))->select();
         $Data = [];
@@ -79,9 +82,10 @@ class Search extends Controller
             'data_total'   =>  count((array)$data)
         ]);
 //       return  json($Data);
-        return  $this->fetch(TMPL_PATH.'/search');
+        return  $this->fetch(TMPL_PATH.$templatePath['template'].'/search');
     }
     public function tag($val){
+        $templatePath = include Env::get('config_path').'siteconfig.php';
         $Categories_data = CategoriesModel::name('label')->where('name',$val)->find();
         $data = ArticleModel::name('article')->where('state',true)->where('label','like',('%'.$val.'%'))->select();
         $Data = [];
@@ -114,6 +118,6 @@ class Search extends Controller
             'data_total'   =>  count((array)$data)
         ]);
 //       return  json($Data);
-        return  $this->fetch(TMPL_PATH.'/search');
+        return  $this->fetch(TMPL_PATH.$templatePath['template'].'/search');
     }
 }

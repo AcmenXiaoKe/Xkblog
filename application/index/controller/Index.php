@@ -15,6 +15,7 @@ class Index extends Controller
 {
     public function index(Request $request)
     {
+        $templatePath = include Env::get('config_path').'siteconfig.php';
         // 最新文章
         // 获取最新文章
         $PaginateModel = ArticleModel::name('article')->paginate(10);
@@ -56,6 +57,6 @@ class Index extends Controller
             'page'          =>  $page,
             'slide_show'    =>  $slide_show
         ]);
-        return $this->fetch(TMPL_PATH.'/index');
+        return $this->fetch(TMPL_PATH.$templatePath['template'].'/index');
     }
    }

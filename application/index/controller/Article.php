@@ -8,12 +8,14 @@ use think\Controller;
 use app\admin\model\Article as ArticleModel;
 use app\admin\model\Comments as CommentsModel;
 use app\admin\model\Categories as CategoriesModel;
+use think\facade\Env;
 use think\Request;
 use app\admin\model\User as UserModel;
 
 class Article extends Controller
 {
     public function index($id){
+        $templatePath = include Env::get('config_path').'siteconfig.php';
         $url = \think\facade\Request::url(true);
         $data = ArticleModel::name('article')->where('aid',$id)->where('state',true)->find();
         // 如果文章不存在就抛出异常
@@ -41,7 +43,7 @@ class Article extends Controller
             'url'           =>      $url,
         ]);
         ArticleModel::name('article')->where('aid',$id)->inc('browse',1)->update();
-        return $this->fetch(TMPL_PATH.'/article');
+        return $this->fetch(TMPL_PATH.$templatePath['template'].'/article');
 
     }
 

@@ -5,11 +5,11 @@
     <!-- 博主信息 -->
     <div class="aside_item author">
         <div class="author_info">
-            <img class="author_info_bg" src="/static/home/images/aside_author_image.jpg" alt="">
+            <img class="author_info_bg" src="/static/mass/home/images/aside_author_image.jpg" alt="">
             <img class="author_info_tx" src="http://q1.qlogo.cn/g?b=qq&nk={$email}&s=640" alt="">
         </div>
         <div class="aside_name">{$name}</div>
-        <div class="Introduction">{$TemplateConfig.Introduction}
+        <div class="Introduction">{$TemplateConfig.Introduction.val}
         </div>
         <div class="total_number">
             <div class="article_total">
@@ -68,7 +68,6 @@
         </div>
 
     </div>
-    {if $TemplateConfig.comments}
     <!-- 最新回复 -->
     <div class="aside_item reply" style="display:{$NewComments ? 'block' : 'none'}">
         <div class="aside_item_title">
@@ -104,8 +103,7 @@
         </div>
         {/foreach}
     </div>
-    {else/}
-    {/if}
+
     <!-- 标签云 -->
     <div class="aside_item label" style="display:{$labelDate ? 'block' : 'none'}">
         <div class="aside_item_title">

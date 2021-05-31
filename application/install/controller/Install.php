@@ -102,12 +102,6 @@ INFO;
                           name varchar(50) not null unique,
                           permissions varchar(255)
         );';
-        $xk_options_table_sql = 'create table xk_options (
-                            name varchar (255)  not null,
-                            url varchar (255) not null,
-                            description varchar (255),
-                            keywords varchar (255)
-);';
         $xk_label_table_sql = 'create table xk_label (
                           laid int primary key auto_increment,
                           name varchar(50)
@@ -175,8 +169,6 @@ INFO;
         Db::execute($xk_group_table_sql);
         echo 'xk_group创建成功！';
 
-        Db::execute($xk_options_table_sql);
-        echo 'xk_options创建成功！';
 
         Db::execute($xk_label_table_sql);
         echo 'xk_label创建成功！';
@@ -203,8 +195,6 @@ INFO;
         echo '插入初始数据';
         $group = "insert into xk_group(name) values ('Super');";
         Db::execute($group);
-        $optionsData = "insert into xk_options (name, url, description, keywords) values ('小柯博客','http://xkblog.xkbk.top/','小柯博客，是专注于业界、互联网、搜索引擎优化、社会化网络、IT技术、谷歌地图、建站、软件等领域的原创IT科技博客.','小柯博客，小柯前端工程师，学习前端');";
-        Db::execute($optionsData);
         Db::name('categories')->insert([
             'catid'      =>  1,
             'catname'      =>  '默认分类'
