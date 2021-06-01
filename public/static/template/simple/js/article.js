@@ -12,6 +12,20 @@ var viewer = new Viewer(document.querySelector('.article_content'), {
 })
 
 let comments_btn = document.querySelector('.comments_btn')
+var comments_Form = document.querySelector('.comments_Form')
+var comments_list_item_reply = document.querySelectorAll('.comments_list_item_reply')
+var pid = 0;
+for (let i = 0; i < comments_list_item_reply.length; i++) {
+    comments_list_item_reply[i].addEventListener('click', function () {
+        let item = $(this.parentNode.parentNode.parentNode)
+        item.after(comments_Form)
+        if (item.attr('data-pid') == 0) {
+            pid = item.attr('data-cid')
+        } else {
+            pid = item.attr('data-pid')
+        }
+    })
+}
 
 comments_btn.addEventListener('click', function () {
     let author = document.querySelector('#author').value
@@ -66,6 +80,7 @@ comments_btn.addEventListener('click', function () {
         email,
         Personal_website,
         content,
+        pid
     }
     $.ajax({
         type: "post",

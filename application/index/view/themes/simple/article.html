@@ -126,7 +126,7 @@
     {else/}
     <div class="comments_list" style="display:{$comments_total == '0' ? 'none' : 'block'};">
         {foreach $comments as $key=>$item}
-        <div class="comments_list_item">
+        <div class="comments_list_item" data-cid="{$item.cid}" data-pid="{$item.pid}">
             <div class="comments_list_item_left">
                 <img src="http://q1.qlogo.cn/g?b=qq&nk={$item.email}&s=640" alt="">
             </div>
@@ -137,10 +137,30 @@
                 <div class="comments_list_item_content">
                     {$item.content}
                 </div>
-                <div class="comments_list_item_date">{$item.date | date = 'Y-m-d'}</div>
+                <div class="comments_list_item_date">{$item.date | date = 'Y-m-d'} <span class="comments_list_item_reply"><svg t="1622508779097"  class="comments_list_item_reply_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2312" width="200" height="200"><path d="M222.208 631.296l-36.352 61.952s-18.432 122.368 22.528 145.408c40.448 23.04 139.776-53.248 139.776-53.248l35.328-59.392-162.304-91.648 1.024-3.072z m360.448-243.712l-162.304-92.16 23.552-39.936 162.304 91.648L629.76 307.2c19.456-32.768 7.68-74.752-25.6-94.208l-40.448-23.04c-33.792-18.944-76.8-7.68-96.256 25.088l-222.72 377.344 162.304 91.648 191.488-324.608-15.872 28.16zM796.16 746.496H465.92c-25.088 0-46.08 20.48-46.08 46.08 0 25.088 20.48 46.08 46.08 46.08h330.24c25.088 0 46.08-20.48 46.08-46.08s-20.48-46.08-46.08-46.08z" fill="#515151" p-id="2313"></path></svg>回复</span></div>
+            </div>
+        </div>
+        {if condition = "empty($item.child)"}
+        {else/}
+        {foreach $item.child as $key=>$item2}
+        <div class="comments_list_item" style="margin-left: 30px" data-cid="{$item2.cid}" data-pid="{$item2.pid}">
+            <div class="comments_list_item_left">
+                <img src="http://q1.qlogo.cn/g?b=qq&nk={$item2.email}&s=640" alt="">
+            </div>
+            <div class="comments_list_item_right">
+                <div class="comments_list_item_info">
+                    <div class="comments_list_item_author">{$item2.author}</div>
+                </div>
+                <div class="comments_list_item_content">
+                    {$item2.content}
+                </div>
+                <div class="comments_list_item_date">{$item2.date | date = 'Y-m-d'} <span class="comments_list_item_reply"><svg t="1622508779097" class="comments_list_item_reply_icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2312" width="200" height="200"><path d="M222.208 631.296l-36.352 61.952s-18.432 122.368 22.528 145.408c40.448 23.04 139.776-53.248 139.776-53.248l35.328-59.392-162.304-91.648 1.024-3.072z m360.448-243.712l-162.304-92.16 23.552-39.936 162.304 91.648L629.76 307.2c19.456-32.768 7.68-74.752-25.6-94.208l-40.448-23.04c-33.792-18.944-76.8-7.68-96.256 25.088l-222.72 377.344 162.304 91.648 191.488-324.608-15.872 28.16zM796.16 746.496H465.92c-25.088 0-46.08 20.48-46.08 46.08 0 25.088 20.48 46.08 46.08 46.08h330.24c25.088 0 46.08-20.48 46.08-46.08s-20.48-46.08-46.08-46.08z" fill="#515151" p-id="2313"></path></svg>回复</span></div>
             </div>
         </div>
         {/foreach}
+        {/if}
+        {/foreach}
+
     </div>
     {/if}
 </div>

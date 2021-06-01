@@ -86,10 +86,21 @@ function editState ($request,$table,$idName){
 function Rulelayer($rule,$pid=0)
 {
     $arr = array();
-
     foreach ($rule as $v) {
         if($v['pid'] == $pid) {
             $v['child']= Rulelayer($rule,$v['catid']);
+            $arr[] = $v;
+        }
+    }
+    return $arr;
+}
+
+function Rulelayers($rule,$pid=0)
+{
+    $arr = array();
+    foreach ($rule as $v) {
+        if($v['pid'] == $pid) {
+            $v['child']= Rulelayers($rule,$v['cid']);
             $arr[] = $v;
         }
     }

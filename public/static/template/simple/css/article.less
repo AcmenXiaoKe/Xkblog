@@ -164,7 +164,7 @@ main {
                .comments_list_item_info {
                    .comments_list_item_author {
                    }
-               }
+               } 
                .comments_list_item_content {
                 margin: 10px 0;
                 font-size: 14px;
@@ -172,7 +172,24 @@ main {
                .comments_list_item_date {
                 font-size: 12px;
                 margin: 5px 0;
+                .comments_list_item_reply { 
+                        opacity: 0;
+                        cursor: pointer;
+                        margin-left: 15px;
+                        .comments_list_item_reply_icon {
+                            margin-right: 3px;    
+                            width: 20px;
+                            height: 20px;
+                            transform: translate(0,5px);
+                        }
+                    }
+                .comments_list_item_reply:hover {
+                   color: var(--Primary);
+                }
                }
+            }
+            .comments_list_item_right:hover  .comments_list_item_reply {
+                    opacity: 1;
             }
         }
     }

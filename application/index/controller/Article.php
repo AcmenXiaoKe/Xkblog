@@ -31,10 +31,12 @@ class Article extends Controller
             array_push($CategoriesData,$Categories);
         }
         $Comments = CommentsModel::name('comments')->where('aid',$id)->where('state',true)->select();
+        $CommentsData = Rulelayers($Comments);
+//        return json($CommentsData);
         $authorInfo = UserModel::name('user')->where('name',$data['author'])->find();
         $this->assign([
             'data'          =>      $data,
-            'comments'      =>      $Comments,
+            'comments'      =>      $CommentsData,
             'comments_total'=>      count((array)$Comments),
             'Categories'    =>      $CategoriesData,
             'next'          =>      $next,
@@ -50,7 +52,7 @@ class Article extends Controller
     public function comments(Request $request){
         $data = $request->post();
         $insert =  CommentsModel::name('comments')->insert($data);
-        return dump($insert);
+//        return dump($insert);
         return res(null,'评论成功！',200);
     }
     public function praise(Request $request){

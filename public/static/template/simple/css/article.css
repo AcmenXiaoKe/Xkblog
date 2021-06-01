@@ -168,6 +168,23 @@ main .main .page .page_item a {
   font-size: 12px;
   margin: 5px 0;
 }
+.comments .comments_list .comments_list_item .comments_list_item_right .comments_list_item_date .comments_list_item_reply {
+  opacity: 0;
+  cursor: pointer;
+  margin-left: 15px;
+}
+.comments .comments_list .comments_list_item .comments_list_item_right .comments_list_item_date .comments_list_item_reply .comments_list_item_reply_icon {
+  margin-right: 3px;
+  width: 20px;
+  height: 20px;
+  transform: translate(0, 5px);
+}
+.comments .comments_list .comments_list_item .comments_list_item_right .comments_list_item_date .comments_list_item_reply:hover {
+  color: var(--Primary);
+}
+.comments .comments_list .comments_list_item .comments_list_item_right:hover .comments_list_item_reply {
+  opacity: 1;
+}
 @media screen and (max-width: 466px) {
   .comments .comments_header {
     flex-wrap: wrap;
