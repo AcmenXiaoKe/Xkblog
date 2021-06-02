@@ -50,23 +50,13 @@
         <!-- 主体 -->
         <div class="main_wrap">
             <div class="main_box">
-                <div class="main_header" style="display: {$slide_show ? 'block' : 'none'}">
+                <div class="main_header" style="">
                     <div class="main_header_left">
-                        <div class="banner">
+                        <div class="banner" data-json="{$TemplateConfig.slideshow.val}">
 
                             <!-- Swiper -->
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
-                                    {present name='slide_show'}
-                                    {foreach $slide_show as $key=>$item}
-                                    <div class="swiper-slide">
-                                        <a href="{$item.url}" target="_blank">
-                                            <img lay-src="{$item.img_url}" src="https://cdn.jsdelivr.net/npm/typecho-joe-next@6.0.0/assets/img/lazyload.jpg" alt="">
-                                        </a>
-                                        <div class="swiper-slide_title">{$item.title}</div>
-                                    </div>
-                                    {/foreach}
-                                    {/present}
                                 </div>
                                 <!-- Add Pagination -->
                                 <div class="swiper-pagination"></div>
@@ -186,6 +176,4 @@
 
 
 {block name="footer_script"}
-<script>
-</script>
 {/block}

@@ -3,7 +3,6 @@ namespace app\index\controller;
 
 use app\admin\model\Article as ArticleModel;
 use app\admin\model\Comments as CommentsModel;
-use app\admin\model\SlideShow as SlideShowModel;
 use think\Controller;
 use app\admin\model\Categories as CategoriesModel;
 use think\facade\Env;
@@ -49,13 +48,10 @@ class Index extends Controller
             ];
             array_push($Data,$obj);
         }
-        // 获取轮播图
-        $slide_show = SlideShowModel::name('slide_show')->order('numerical desc')->select();
         $this->assign([
            'articleList'    =>  $Data,
             'totalPage'     =>  $totalPage,
             'page'          =>  $page,
-            'slide_show'    =>  $slide_show
         ]);
         return $this->fetch(TMPL_PATH.$templatePath['template'].'/index');
     }

@@ -18,8 +18,6 @@ class Index extends Controller
         $article  =   ArticleModel::name('article')->limit(10)->order("aid desc")->select();
         //获取最新评论
         $comments =    ArticleModel::name('comments')->limit(10)->order("cid desc")->select();
-        // 获取待审友联
-        $pdg_link_total = LinkModel::name('link')->where('state',false)->count();
         // 待审评论
         $pdg_comments_total = CommentsModel::name('comments')->where('state',false)->count();
         // 文章草稿箱
@@ -31,7 +29,6 @@ class Index extends Controller
             'categories_total'      =>  getCateGoriesTotal(),
             'article'               =>  $article,
             'comments'              =>  $comments,
-            'pdg_link_total'        =>  $pdg_link_total,
             'pdg_comments_total'    =>  $pdg_comments_total,
             'pfg_article'           =>  $pfg_article
         ]);

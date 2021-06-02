@@ -1,3 +1,13 @@
+var slideshow  = JSON.parse($('.banner').attr('data-json'))
+for (let i = 0; i < slideshow.length; i++) {
+    let str = `<div class="swiper-slide">
+                                        <a href="${slideshow[i][1]}" target="_blank">
+                                            <img src="${slideshow[i][0]}"  alt="">
+                                        </a>
+                                        <div class="swiper-slide_title">${slideshow[i][2]}</div>
+      </div>`
+    $('.swiper-wrapper').append(str)
+}
 // 轮播图插件配置
 var swiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
@@ -7,7 +17,7 @@ var swiper = new Swiper('.swiper-container', {
         dynamicBullets: true,
         dynamicMainBullets: 2
     },
-    autoplay: true,
+    // autoplay: true,
     autoplay: {
         delay: 5000,
         stopOnLastSlide: false,

@@ -7,6 +7,7 @@ namespace app\admin\controller;
 use app\admin\model\User as UserModel;
 use think\Controller;
 use think\facade\Cookie;
+use think\facade\Env;
 use think\facade\Validate;
 use think\Request;
 
@@ -14,7 +15,7 @@ class Login extends Controller
 {
     public function index()
     {
-        $web_options = web_options();
+        $web_options = include Env::get('config_path').'siteconfig.php';
         $this->assign('web_options',$web_options);
         return $this->fetch('/login');
     }
