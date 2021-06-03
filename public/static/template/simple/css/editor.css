@@ -43,3 +43,10 @@ h3 {
 h1,h2,h3 {
     border-bottom: 0 !important;
 }
+.article_content {
+  background: var(--Primary-bg) !important;
+  color: var(--color) !important;
+}
+.prettyprint {
+  border: 0 !important;
+}

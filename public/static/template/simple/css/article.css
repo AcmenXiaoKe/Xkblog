@@ -7,7 +7,7 @@
 main .main {
   margin: 15px 0;
   padding: 15px;
-  background: #fff;
+  background: var(--Primary-bg);
   border-radius: 5px;
 }
 main .main .article_title {
@@ -41,7 +41,7 @@ main .main .article_content {
 }
 main .main .copy-text {
   margin-top: 35px;
-  background: #F5F5F5;
+  background: var(--html-bg);
   padding: 5px 15px;
 }
 main .main .copy-text p {
@@ -63,10 +63,11 @@ main .main .page .page_item {
 }
 main .main .page .page_item .page_icon {
   cursor: pointer;
-  background: #f5f5f5;
+  background: var(--html-bg);
   width: 65px;
   height: 25px;
   text-align: center;
+  line-height: 25px;
   color: #999;
 }
 main .main .page .page_item a {
@@ -76,13 +77,14 @@ main .main .page .page_item a {
 }
 .comments {
   padding: 15px;
-  background: #fff;
+  background: var(--Primary-bg);
   border-radius: 5px;
 }
 .comments .comments_title {
   display: flex;
   align-items: center;
   font-size: 14px;
+  color: var(--info);
 }
 .comments .comments_title_icon {
   width: 15px;
@@ -100,8 +102,10 @@ main .main .page .page_item a {
   height: 30px;
   text-indent: 1em;
   outline: none;
-  border: 1px solid #e4e7ed;
+  border: 1px solid var(--border-color);
   transition: all 0.2s;
+  background: var(--Primary-bg);
+  color: var(--color);
 }
 .comments .comments_header input:nth-child(1) {
   margin-left: 0;
@@ -116,9 +120,10 @@ main .main .page .page_item a {
   padding: 15px;
   width: 100%;
   height: 150px;
-  border: 1px solid #e4e7ed;
+  border: 1px solid var(--border-color);
   outline: none;
   resize: none;
+  color: var(--color);
 }
 .comments .comments_main textarea:focus {
   border: 1px solid var(--Primary);
@@ -137,12 +142,15 @@ main .main .page .page_item a {
 .comments .comments_main .comments_btn:hover {
   animation: 5s ease-in-out 0s infinite normal none running comments_form_btn_and;
 }
+.comments .comments_main #content {
+  background: var(--Primary-bg);
+}
 .comments .comments_list {
   margin-top: 15px;
 }
 .comments .comments_list .comments_list_item {
   display: flex;
-  border-bottom: 1px solid #e4e7ed;
+  border-bottom: 1px solid var(--border-color);
   padding: 10px 0;
   margin: 15px 0;
 }

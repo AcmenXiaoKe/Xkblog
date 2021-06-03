@@ -6,6 +6,9 @@
   --html-bg: #F5F5F5;
   --title-color: #363636;
   --info: #999;
+  --border-color: #e4e7ed;
+  --Primary-bg: #fff;
+  --color: #333333;
 }
 * {
   margin: 0;
@@ -188,7 +191,7 @@ header .nav .nav_item:hover .children_wrap {
 }
 footer {
   margin-top: 20px;
-  border-top: 1px solid #e4e7ed;
+  border-top: 1px solid var(--border-color);
   height: 70px;
 }
 footer .footer_wrap {
