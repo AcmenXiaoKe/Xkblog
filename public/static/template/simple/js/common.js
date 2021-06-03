@@ -83,7 +83,8 @@ MobileNavMask.addEventListener('click', function () {
 
 
 var theme = document.querySelector('.theme')
-var theme_icon = theme.querySelector('.iconfont')
+let sun = document.querySelector('.sun')
+let moon = document.querySelector('.moon')
 var theme_type = localStorage.getItem("theme_type") || 'default';
 // 调用主题切换函数，传递一个当前处于那种主题
 SubjectSwitch(theme_type)
@@ -107,10 +108,12 @@ function SubjectSwitch(val) {
         document.documentElement.style.setProperty('--title-color', "#F2F6FC")
         document.documentElement.style.setProperty('--border-color', "rgba(255,255,255,.1)")
         document.documentElement.style.setProperty('--color', "rgba(255,255,255,.8)")
-
+        moon.style.display = 'none'
+        sun.style.display = 'block'
     }
     else {
-        // theme_icon
+        moon.style.display = 'block'
+        sun.style.display = 'none'
         localStorage.setItem("theme_type", "default")
         document.documentElement.style.setProperty('--html-bg', "#F5F5F5")
         document.documentElement.style.setProperty('--Primary-bg', "#FFF")
