@@ -40,6 +40,7 @@ class Page extends Controller
             'Categories'    =>      $CategoriesData,
             'authorInfo'    =>      $authorInfo,
             'url'           =>      $url,
+            'title'         =>      $data['title'],
         ]);
         ContentsModel::name('contents')->where('aid',$aid)->where('type','post')->inc('browse',1)->update();
         return $this->fetch(TMPL_PATH.$templatePath['template'].'/article');

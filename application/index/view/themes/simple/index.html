@@ -3,6 +3,7 @@
 <link href='http://cdn.repository.webfont.com/webfonts/nomal/144871/19673/60ae51c0f629d8eb900db7cb.css'
       rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="/static/template/simple/css/index.css">
+<link rel="stylesheet" href="/static/template/simple/css/animate.min.css">
 {/block}
 
 
@@ -30,7 +31,7 @@
     <main class="wrap">
         <div class="article">
             {foreach $articleList as $key=>$item}
-            <div class="article_item">
+            <div class="article_item bounceIn">
                 <a href="/article/{$item.aid}" class="article_item_cover">
                     {empty name='item.cover'}
                     <img  src="https://cdn.jsdelivr.net/gh/2998524835/xkblog-Static/assets/thumb/{:mt_rand(1,40)}.jpg"  alt="">
@@ -114,5 +115,6 @@
 {/block}
 
 {block name="footer_script"}
+<script src="/static/template/simple/js/wow.min.js"></script>
 <script src="/static/template/simple/js/index.js"></script>
 {/block}

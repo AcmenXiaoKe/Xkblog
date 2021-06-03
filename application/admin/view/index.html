@@ -227,30 +227,11 @@
                     <div class="latest_information_wrap">
                         <div class="latest_information_wrap_title">官方最新日志</div>
                         <ul class="latest_information_item_list">
+                            {foreach $notice as $key=>$item}
                             <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
+                                <a href="{$item.url}" target="_blank"><span class="segmentation">{$item.data}</span>{$item.title}</a>
                             </li>
-                            <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
-                            </li>
-                            <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
-                            </li>
-                            <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
-                            </li>
-                            <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
-                            </li>
-                            <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
-                            </li>
-                            <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
-                            </li>
-                            <li class="latest_information_item_list_item">
-                                <a href="#"><span class="segmentation">4.30</span>第一个版本上线</a>
-                            </li>
+                            {/foreach}
                         </ul>
                     </div>
                 </div>

@@ -45,7 +45,6 @@ class Search extends Controller
           'val'         =>      $val,
           'data_total'   =>  count((array)$data)
       ]);
-//       return  json($Data);
       return  $this->fetch(TMPL_PATH.$templatePath['template'].'/search');
     }
     public function category($id){
@@ -81,7 +80,6 @@ class Search extends Controller
             'val'         =>      $Categories_data['catname'],
             'data_total'   =>  count((array)$data)
         ]);
-//       return  json($Data);
         return  $this->fetch(TMPL_PATH.$templatePath['template'].'/search');
     }
     public function tag($val){

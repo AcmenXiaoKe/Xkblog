@@ -43,6 +43,7 @@ class Article extends Controller
             'previous'      =>      $previous,
             'authorInfo'    =>      $authorInfo,
             'url'           =>      $url,
+            'title'         =>      $data['title'],
         ]);
         ContentsModel::name('contents')->where('aid',$id)->where('type','post')->inc('browse',1)->update();
         return $this->fetch(TMPL_PATH.$templatePath['template'].'/article');

@@ -44,7 +44,7 @@ class Index extends Controller
                 'status'        =>  $article[$i]['state'],
                 'Categories'    =>  $CategoriesModel,
                 'comments_total'=>  $comments_total,
-                'cover'         =>  $article[$i]['cover']
+                'cover'         =>  $article[$i]['cover'],
             ];
             array_push($Data,$obj);
         }

@@ -1,3 +1,15 @@
+var wow = new WOW({
+    boxClass: 'article_item',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+});
+wow.init();
+
+
+
+
 let search_val = document.querySelector('#search_val')
 let search_btn = document.querySelector('.search_btn')
 
