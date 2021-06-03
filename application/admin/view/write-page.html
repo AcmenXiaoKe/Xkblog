@@ -15,7 +15,7 @@
             <!-- 内容主体区域 -->
             <div class="layui-body_box">
                 <div class="layui-body_wrap">
-                      <div class="layui-body_wrap_title">{$operation == 'insert' ? '撰写新文章' : '编辑文章'}</div>
+                      <div class="layui-body_wrap_title">{$operation == 'insert' ? '撰写新页面' : '编辑页面'}</div>
                     <!-- <form action=""> -->
                     <div class="layui-row">
                         <div class="layui-col-xs12  layui-col-md9 write_post_main" date-operation="{$operation}">
@@ -46,43 +46,10 @@
                                             <!-- 注意：这一层元素并不是必须的 -->
                                             <input type="text" value="{$release_date ?: ''}" class="layui-input" id="article_date">
                                         </div>
-                                        <div class="write_post_attribute_title">分类</div>
-                                        <div class="write_post_attribute_class">
-
-                                            <div class="write_post_attribute_categories" style="display:flex;    flex-direction: column;
-    align-items: flex-start;">
-                                                {foreach $categories_list as $key => $item}
-                                                <div>
-                                                    <input id="write_post_class" type="checkbox"   {$item.flag ?: false  ?  'checked' : '' }      class="write_post_crid"    value="{$item.catid}" > {$item.catname}
-                                                </div>
-                                                {/foreach}
-                                            </div>
-
-                                        </div>
-                                        <div class="write_post_attribute_title">标签</div>
-                                        <div class="tag_wrap">
-                                            <div class="tag_list">
-                                                {present name='label'}
-                                                {foreach $label   as $key => $item}
-                                                <div class="tag_item">
-                                                    <span>{$item}</span>
-                                                    <a class="del">x</a>
-                                                </div>
-                                                {/foreach}
-                                                {/present}
-                                            </div>
-                                            <input type="text" class="tag_input">
-                                        </div>
                                     </div>
-<!--                                    <div class="layui-tab-item">-->
-<!--                                        <button type="button" class="layui-btn" id="upload" style="margin: 15px;">-->
-<!--                                            <i class="layui-icon">&#xe67c;</i>上传图片-->
-<!--                                        </button>-->
-<!--                                    </div>-->
                                 </div>
                             </div>
                         </div>
-                        <!-- </form> -->
                     </div>
                 </div>
 
@@ -95,5 +62,5 @@
 {block name="footer_script"}
 <script src="/static/admin/lib/editor.md-master/editormd.min.js"></script>
 <script src="/static/admin/js/compiler.js"></script>
-<script src="/static/admin/js/write-post.js"></script>
+<script src="/static/admin/js/write-page.js"></script>
 {/block}

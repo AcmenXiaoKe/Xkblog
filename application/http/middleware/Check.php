@@ -2,7 +2,7 @@
 
 namespace app\http\middleware;
 
-use app\admin\model\Article as ArticleModel;
+use app\admin\model\Contents as ContentsModel;
 use app\admin\model\Label as LabelModel;
 use think\Controller;
 use think\Db;
@@ -47,10 +47,10 @@ class Check extends Controller
                 $NewComments = CommentsModel::name('comments')->limit(5)->order("cid desc")->select();
                 $this->assign('web_options',$web_options);
                 // 获取热门文章
-                $hot = ArticleModel::name('article')->where('state',true)->order('browse desc')->limit(3)->select();
+                $hot = ContentsModel::name('contents')->where('state',true)->order('browse desc')->limit(3)->select();
                 // 获取随机文章
                 $randomArticle  = [];
-                $allArticle = ArticleModel::name('article')->where('state',true)->select();
+                $allArticle = ContentsModel::name('contents')->where('state',true)->select();
 
                 for($i=0; $i  < 4;$i++) {
                     try {
@@ -62,8 +62,8 @@ class Check extends Controller
 
 
                 }
-
-
+                // 获取页面
+                $pages = ContentsModel::name('contents')->where('state',true)->where('type','page')->select();
                 // 获取分类
               //  $categories = CategoriesModel::name('categories')->select();
                 // 公共的变量
@@ -80,7 +80,8 @@ class Check extends Controller
                     'randomArticle'    =>  $randomArticle,
                     'TemplateConfig'   =>  $TemplateConfig,
                     'categories'       =>  $categories,
-                    'categoriesData'  =>   $categoriesData
+                    'categoriesData'  =>   $categoriesData,
+                    'pages'            =>   $pages
                 ]);
             }
             // 判断当前模块是否是 admin

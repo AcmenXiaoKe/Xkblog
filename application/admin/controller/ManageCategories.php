@@ -4,7 +4,7 @@
 namespace app\admin\controller;
 
 
-use app\admin\model\Article as ArticleModel;
+use app\admin\model\Contents as ContentsModel;
 use think\Controller;
 use think\Db;
 use app\admin\model\Categories as CategoriesModel;
@@ -16,7 +16,7 @@ class ManageCategories extends Controller
         $data = CategoriesModel::name('categories')->select();
         $Data = [];
         for($i=0; $i < count((array)$data); $i++) {
-            $total = ArticleModel::name('article')->where('catid','like',('%'.$data[$i]['catid'].'%'))->count();
+            $total = ContentsModel::name('contents')->where('catid','like',('%'.$data[$i]['catid'].'%'))->count();
             $Obj = [
                 'catid'  =>  $data[$i]['catid'],
                 'name'  =>  $data[$i]['catname'],

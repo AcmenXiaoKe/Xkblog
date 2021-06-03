@@ -13,7 +13,7 @@
 
 
 use app\admin\model\User as UserModel;
-use app\admin\model\Article as ArticleModel;
+use app\admin\model\Contents as ContentsModel;
 use app\admin\model\Comments as CommentsModel;
 use think\facade\Cookie;
 use think\facade\View;
@@ -37,7 +37,7 @@ function getUserInfo () {
 }
 // 获取到文章的总数
 function getArticleTotal () {
-    return ArticleModel::name('article')->where('state',true)->count();
+    return ContentsModel::name('contents')->where('state',true)->where('type','post')->count();
 }
 // 获取分类总数
 function getCateGoriesTotal() {
@@ -45,11 +45,11 @@ function getCateGoriesTotal() {
 }
 // 获取评论总数
 function getCommentsTotal() {
-    return CommentsModel::name('comments')->where('state',true)->count();
+    return CommentsModel::name('contents')->where('state',true)->count();
 }
 // 获取文章浏览的总数
 function getBrowseTotal () {
-    return CommentsModel::name('article')->sum('browse',true);
+    return CommentsModel::name('contents')->sum('browse',true);
 }
 // 通用删除函数
 function del($request,$table,$idName){

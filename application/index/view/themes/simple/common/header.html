@@ -10,6 +10,11 @@
     </div>
     <div class="logo"><a href="/" style="color: var(--header-color);">{$web_options['name']}</a></div>
     <div class="nav">
+      {foreach $pages as $key=>$item}
+      <div class="nav_item">
+        <a href="/page/{$item.aid}" class="nav_item_url">{$item.title}</a>
+      </div>
+      {/foreach}
       {foreach $categories as $key=>$item}
       <div class="nav_item">
         <a href="/class/{$item.catid}" class="nav_item_url">{$item.catname}</a>
@@ -51,13 +56,15 @@
         </div>
         {/if}
       </div>
-
       {/foreach}
     </div>
   </header>
 </div>
 <div class="mobile_nav">
   <ul>
+    {foreach $pages as $key=>$item}
+    <li><a href="/page/{$item.aid}">{$item.title}</a></li>
+    {/foreach}
     {foreach $categoriesData as $key=>$item}
     <li><a href="/class/{$item.catid}">{$item.catname}</a></li>
     {/foreach}

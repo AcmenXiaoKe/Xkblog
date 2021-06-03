@@ -9,13 +9,13 @@ use app\admin\model\Comments as CommentsModel;
 use think\Controller;
 use think\facade\Env;
 use think\Request;
-use app\admin\model\Article as ArticleModel;
+use app\admin\model\Contents as ContentsModel;
 
 class Search extends Controller
 {
     public function index($val){
         $templatePath = include Env::get('config_path').'siteconfig.php';
-      $data = ArticleModel::name('article')->where('state',true)->where('content','like',('%'.$val.'%'))->select();
+      $data = ContentsModel::name('contents')->where('state',true)->where('type','post')->where('content','like',('%'.$val.'%'))->select();
       $Data = [];
        for ($i=0;$i< count((array)$data);$i++) {
            $catid =explode (",",$data[$i]['catid']);
@@ -51,7 +51,7 @@ class Search extends Controller
     public function category($id){
         $templatePath = include Env::get('config_path').'siteconfig.php';
         $Categories_data = CategoriesModel::name('categories')->where('catid',$id)->find();
-        $data = ArticleModel::name('article')->where('state',true)->where('catid','like',('%'.$id.'%'))->select();
+        $data = ContentsModel::name('contents')->where('state',true)->where('type','post')->where('catid','like',('%'.$id.'%'))->select();
         $Data = [];
         for ($i=0;$i< count((array)$data);$i++) {
             $catid =explode (",",$data[$i]['catid']);
@@ -87,7 +87,7 @@ class Search extends Controller
     public function tag($val){
         $templatePath = include Env::get('config_path').'siteconfig.php';
         $Categories_data = CategoriesModel::name('label')->where('name',$val)->find();
-        $data = ArticleModel::name('article')->where('state',true)->where('label','like',('%'.$val.'%'))->select();
+        $data = ContentsModel::name('contents')->where('state',true)->where('type','post')->where('label','like',('%'.$val.'%'))->select();
         $Data = [];
         for ($i=0;$i< count((array)$data);$i++) {
             $catid =explode (",",$data[$i]['catid']);

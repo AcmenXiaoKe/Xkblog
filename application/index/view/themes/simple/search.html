@@ -42,7 +42,7 @@
 
   <div class="article">
     {empty name='data'}
-    <span style="color: var(--info);font-size: 14px;">没有找到相关结果...</span>
+    <span style="color: var(--info);font-size: 14px;margin-left: 15px;">没有找到相关结果...</span>
     {else/}
     <div class="search_prompt">搜索到<span>{$data_total}</span>篇与<span>{$val}</span>的结果</div>
     {foreach $data as $key=>$item}

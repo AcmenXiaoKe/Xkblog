@@ -87,14 +87,14 @@
             <p>非特殊说明，本博所有文章均为博主原创。</p>
             <p>如若转载，请注明出处：<a href="{$url}">{$url}</a></p>
         </div>
-        <div class="page">
-            <div class="previous page_item" style="opacity: {$previous.title ? '1' : '0'}">
+        <div class="page" style="display: {$data.type == 'page' ? 'none' : 'block'}">
+            <div class="previous page_item" style="opacity: {$previous.title    ? '1' : '0'}">
                 <div class="page_icon">上一篇</div>
-                <a href="{$previous.aid ?  $previous.aid  : '../'}">{$previous.title}</a>
+                <a href="{$previous.aid ?: '' ?  $previous.aid  : '../'}">{$previous.title ?: ''}</a>
             </div>
             <div class="next page_item" style="opacity: {$next.title ? '1' : '0'}">
                 <div class="page_icon">下一篇</div>
-                <a href="{$next.aid ?  $next.aid  : '../'}">{$next.title}</a>
+                <a href="{$next.aid ?: '' ?  $next.aid  : '../'}">{$next.title ?: ''}</a>
             </div>
         </div>
     </div>

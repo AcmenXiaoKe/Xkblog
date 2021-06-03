@@ -4,7 +4,7 @@
 namespace app\admin\controller;
 
 
-use app\admin\model\Article as ArticleModel;
+use app\admin\model\Contents as ContentsModel;
 use think\Controller;
 use think\Db;
 use think\Request;
@@ -20,7 +20,7 @@ class WritePost extends Controller
       $operation = $aid ? 'update' : 'insert';
 
       if($operation == 'update') {
-          $data = ArticleModel::name('article')->where('aid',$aid)->find();
+          $data = ContentsModel::name('contents')->where('aid',$aid)->find();
           $is_categoriest = explode (",",$data['catid']);;
           $label = explode('|',$data['label'])[0] == ''  ? null  : explode('|',$data['label']) ;
           $this->assign([
@@ -72,11 +72,11 @@ class WritePost extends Controller
             'cover'            =>   $cover ? $cover : null
         ];
          if($data['operation'] == 'update') {
-             $create = ArticleModel::name('article')->where('aid',$data['aid'])->update($Date);
+             $create = ContentsModel::name('contents')->where('aid',$data['aid'])->update($Date);
 
          }
          if($data['operation'] == 'insert') {
-             $create = ArticleModel::name('article')->insert($Date);
+             $create = ContentsModel::name('contents')->insert($Date);
          }
 
         if($create == 0) {
@@ -107,7 +107,7 @@ class WritePost extends Controller
     public function del(Request $request){
         $id = $request->post()['id'];
         $del_comments = CommentsModel::name('comments')->where('aid',$id)->delete();
-        $del =  ArticleModel::name('article')->where('aid',$id)->delete();
+        $del =  ContentsModel::name('contents')->where('aid',$id)->delete();
         if($del == 0) {
             return res(null,'删除失败！',400);
         }

@@ -1,7 +1,7 @@
 <?php
 namespace app\index\controller;
 
-use app\admin\model\Article as ArticleModel;
+use app\admin\model\Contents as ContentsModel;
 use app\admin\model\Comments as CommentsModel;
 use think\Controller;
 use app\admin\model\Categories as CategoriesModel;
@@ -17,12 +17,12 @@ class Index extends Controller
         $templatePath = include Env::get('config_path').'siteconfig.php';
         // 最新文章
         // 获取最新文章
-        $PaginateModel = ArticleModel::name('article')->paginate(10);
+        $PaginateModel = ContentsModel::name('contents')->where('type','post')->paginate(10);
         $totalPage = ceil($PaginateModel->total() / 10);
         $data = $request->get();
         $size = array_key_exists('size',$data) ?  $data['size'] : 10;
         $page = array_key_exists('page',$data) ?  $data['page'] : 1;
-        $article  =  ArticleModel::name('article')->where('state',true)->order("aid desc" )->limit(($page -1) * $size ,$size)->select();
+        $article  =  ContentsModel::name('contents')->where('state',true)->where('type','post')->order("aid desc" )->limit(($page -1) * $size ,$size)->select();
         $Data = [];
         for ($i=0;$i< count((array)$article);$i++) {
             $catid =explode (",",$article[$i]['catid']);

@@ -106,7 +106,7 @@ INFO;
                           laid int primary key auto_increment,
                           name varchar(50)
 );';
-        $xk_article_table_sql = 'create table xk_article(
+        $xk_contents_table_sql = 'create table xk_contents(
                            aid int primary key auto_increment,
                            title varchar (150) not null,
                            author  varchar (15) not null,
@@ -120,7 +120,9 @@ INFO;
                            recommended bool default false ,
                            state bool default true,
                            cover varchar(255) DEFAULT NULL,
-                           catid varchar(255) DEFAULT NULL
+                           catid varchar(255) DEFAULT NULL,
+                           type varchar (64) DEFAULT "post",
+                           template varchar (64) DEFAULT null 
 );';
         $xk_comments_table_sql = 'create table xk_comments(
                             cid int primary key auto_increment,
@@ -128,28 +130,12 @@ INFO;
                             author varchar (20) not null,
                             email varchar (50) not null,
                             content varchar (255) not null,
-                            parent int,
+                            pid int,
                             state bool default true,
                             date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                            foreign key( aid ) references xk_article (aid)
+                            foreign key( aid ) references xk_contents (aid)
 );';
-        $xk_link_table_sql = 'create table xk_link(
-                        id int primary key auto_increment,
-                        numerical int default 0,
-                        name varchar (25) not null,
-                        email varchar (255) not null,
-                        url varchar (255) not null,
-                        description varchar (255) not null,
-                        icon varchar (255),
-                        state bool default false 
-);';
-        $xk_slide_show_table_sql = 'create table xk_slide_show(
-            sid int primary key auto_increment,
-            numerical int default 0,
-            title varchar(25),
-            url varchar (255),
-            img_url varchar (255)
-);';
+
         $xk_user_table_sql = 'create table xk_user (
                          uid int primary key auto_increment,
                          username varchar (20) not null unique ,
@@ -173,17 +159,12 @@ INFO;
         Db::execute($xk_label_table_sql);
         echo 'xk_label创建成功！';
 
-        Db::execute($xk_article_table_sql);
+        Db::execute($xk_contents_table_sql);
         echo 'xk_article创建成功！';
 
         Db::execute($xk_comments_table_sql);
         echo 'xk_comments创建成功！';
 
-        Db::execute($xk_link_table_sql);
-        echo 'xk_link创建成功！';
-
-        Db::execute($xk_slide_show_table_sql);
-        echo 'xk_slide_show创建成功！';
 
         Db::execute($xk_categories_table_sql);
         echo 'xk_categories创建成功！';
@@ -206,7 +187,7 @@ INFO;
             'name'              =>  $data['admin_name'],
             'permissions'       =>  'Super'
         ]);
-        Db::name('article')->insert([
+        Db::name('contents')->insert([
             'aid'           =>      1,
             'title'         =>      '欢迎使用 Xkblog',
             'author'        =>      $data['admin_name'],

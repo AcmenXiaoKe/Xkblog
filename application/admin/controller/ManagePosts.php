@@ -5,20 +5,20 @@ namespace app\admin\controller;
 
 
 use think\Controller;
-use app\admin\model\Article as ArticleModel;
+use app\admin\model\Contents as ContentsModel;
 use app\admin\model\Categories as CategoriesModel;
 use think\Request;
 
 class ManagePosts extends Controller
 {
     public function index(){
-        $data = ArticleModel::name('article')->order('aid desc')->paginate(10);
+        $data = ContentsModel::name('contents')->where('type','post')->order('aid desc')->paginate(10);
 
          $this->assign('data',$data);
          return $this->fetch('/manage-posts');
     }
     public function edit(Request $request){
-        return  editState($request,'article','aid');
+        return  editState($request,'contents','aid');
     }
 }
 

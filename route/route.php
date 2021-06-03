@@ -23,7 +23,8 @@ Route::get('/search/:val','Search/index');
 Route::get('/class/:id','Search/category');
 // 标签
 Route::get('/tag/:val','Search/tag');
-
+// 页面
+Route::get('/page/:aid','Page/index');
 //Route::miss('index/Error/index');
 // 后台
 //Route::get('/admin','/admin/');
