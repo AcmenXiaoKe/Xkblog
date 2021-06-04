@@ -2,21 +2,13 @@
     <div class="wrap footer">
         <div class="footer_link">
             <div>
-                <a href="/link">友情链接
+                {foreach $pages as $key=>$item}
+                <a href="/page/{$item.aid}">{$item.title}
                     <div class="url_hr">
                         <span></span>
                     </div>
                 </a>
-                <a href="#">在线留言
-                    <div class="url_hr">
-                        <span></span>
-                    </div>
-                </a>
-                <a href="#">关于我们
-                    <div class="url_hr">
-                        <span></span>
-                    </div>
-                </a>
+                {/foreach}
             </div>
         </div>
         <div class="Copyright">

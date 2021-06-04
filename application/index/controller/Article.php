@@ -58,7 +58,7 @@ class Article extends Controller
     }
     public function praise(Request $request){
         $data = $request->post();
-        $updateArticle =  ContentsModel::name('contents')->where('aid',$data['id'])->where('type','post')->inc('praise',1)->update();
+        $updateArticle =  ContentsModel::name('contents')->where('aid',$data['id'])->inc('praise',1)->update();
         if($updateArticle) {
             return res(null,'点赞成功！',200);
         }

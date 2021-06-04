@@ -22,14 +22,7 @@ class Check extends Controller
             return  $next($request);
         }
         if ($request->module() == 'install') {
-            if(!file_exists('install.lock')) {
-                echo '你还没有安装呢 <a href="/install/install">安装</a>';
                 return $next($request);
-            } else {
-                echo '你已经安装过了，如果需要重新安装，请删除 public/install.lock 文件';
-                return $next($request);
-            }
-
         }
         if(!file_exists('install.lock')) {
             return redirect('/install');
@@ -47,10 +40,10 @@ class Check extends Controller
                 $NewComments = CommentsModel::name('comments')->limit(5)->order("cid desc")->select();
                 $this->assign('web_options',$web_options);
                 // 获取热门文章
-                $hot = ContentsModel::name('contents')->where('state',true)->order('browse desc')->limit(3)->select();
+                $hot = ContentsModel::name('contents')->where('state',true)->where('type','post')->order('browse desc')->limit(3)->select();
                 // 获取随机文章
                 $randomArticle  = [];
-                $allArticle = ContentsModel::name('contents')->where('state',true)->select();
+                $allArticle = ContentsModel::name('contents')->where('state',true)->where('type','post')->select();
 
                 for($i=0; $i  < 4;$i++) {
                     try {

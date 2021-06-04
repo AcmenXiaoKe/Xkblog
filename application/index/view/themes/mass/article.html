@@ -70,7 +70,7 @@
                         文章版权归作者所有，未经允许请勿转载。
 
                     </div>
-                    <div class="entry_page">
+                    <div class="entry_page" style="display: {$data['type'] == 'page' ? 'none' : 'flex'}">
                         <div class="previous entry_page_item" style="opacity: {$previous.aid ? '1' : '0'};">
                             <a href="{$previous.aid ?  $previous.aid  : '../'}" >
                                 <div class="entry_page_item_bg">
@@ -80,9 +80,8 @@
                                     <img src="{$previous.cover}" alt="">
                                     {/empty}
                                 </div>
-                                <div class="entry_page_item_title entry_page_item_common" style="display: {$previous.aid ? 'block' : 'none'} ">{$previous.title}</div>
+                                <div class="entry_page_item_title entry_page_item_common" style="display: {$previous.aid ? 'block' : 'none'} ">{$previous.title ?: ''}</div>
                                 <div class="entry_page_item_handle entry_page_item_common" style="display: {$previous.aid ? 'block' : 'none'} ">« 上一篇</div>
-                                <div class="entry_page_item_date entry_page_item_common" style="display: {$previous.aid ? 'block' : 'none'} ">{$previous.release_date | date = 'm-d'}</div>
                                 <div class="black_bg"></div>
                             </a>
                         </div>
@@ -95,9 +94,8 @@
                                     <img src="{$next.cover}" alt="">
                                     {/empty}
                                 </div>
-                                <div class="entry_page_item_title entry_page_item_common" style="display: {$next.aid ? 'block' : 'none'}">{$next.title}</div>
+                                <div class="entry_page_item_title entry_page_item_common" style="display: {$next.aid ? 'block' : 'none'}">{$next.title ?: ''}</div>
                                 <div class="entry_page_item_handle entry_page_item_common" style="display: {$next.aid ? 'block' : 'none'}">下一篇 »</div>
-                                <div class="entry_page_item_date entry_page_item_common" style="display: {$next.aid ? 'block' : 'none'}">{$next.release_date  | date = 'm-d' }</div>
                                 <div class="black_bg"></div>
                             </a>
                         </div>

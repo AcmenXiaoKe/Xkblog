@@ -3,6 +3,7 @@
 
 {block name="header_link"}
 <link rel="stylesheet" href="/static/template/mass/css/index.css">
+<link rel="stylesheet" href="/static/template/mass/css/animate.min.css">
 <style>
     .swiper-slide {
         position: relative;
@@ -115,7 +116,7 @@
                         </div>
                         {else/}
                         {foreach $articleList as $key=>$item}
-                        <div class="article_item">
+                        <div class="article_item bounceIn">
                             <a href="/article/{$item.aid}" class="article_item_letf">
                                 <div class="article_item_letf">
                                     {empty name='item.cover'}
@@ -176,6 +177,8 @@
 
 
 {block name="footer_script"}
+{block name="footer_script"}
+<script src="/static/template/mass/js/wow.min.js"></script>
 <script src="/static/template/mass/lib/swiper/swiper-bundle.min.js"></script>
 <script src="/static/template/mass/js/index.js"></script>
 {/block}

@@ -28,6 +28,14 @@
                     </div>
 
                 </div>
+                {foreach $pages as $key=>$item}
+                <div href="/link" class="nav_item">
+                    <a href="/page/{$item.aid}" class="nav_item_href">{$item.title}</a>
+                    <div class="nav_item_hover">
+                        <div class="nav_item_hover_hr"></div>
+                    </div>
+                </div>
+                {/foreach}
                 {foreach $categories as $key=>$item}
                 <div href="#" class="nav_item">
                     <div class="class_nav">
@@ -76,17 +84,13 @@
                     </div>
                 </div>
                 {/foreach}
-                <div href="/link" class="nav_item">
-                    <a href="/link" class="nav_item_href">友联</a>
-                    <div class="nav_item_hover">
-                        <div class="nav_item_hover_hr"></div>
-                    </div>
-                </div>
                 <div class="mobile_model">
                     {foreach $categoriesData as $key=>$item}
                     <a href="/class/{$item.catid}" class="mobile_model_item">{$item.catname}</a>
                     {/foreach}
-                    <a href="/link" class="mobile_model_item">友联</a>
+                    {foreach $pages as $key=>$item}
+                    <a href="/page/{$item.aid}" class="mobile_model_item">{$item.title}</a>
+                    {/foreach}
                 </div>
             </div>
         </div>

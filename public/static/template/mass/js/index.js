@@ -33,3 +33,13 @@ for (var i = 0; i < main_article_title_tag_item.length; i++) {
         this.classList = 'main_article_title_tag_item main_article_title_tag_item_selected';
     })
 }
+
+var wow = new WOW({
+    boxClass: 'article_item',
+    animateClass: 'animated',
+    offset: 0,
+    mobile: true,
+    live: true
+});
+wow.init();
+
